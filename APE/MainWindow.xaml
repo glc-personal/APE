@@ -5,47 +5,121 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APE"
         mc:Ignorable="d"
-        Title="CDP 2.0 Assay Protocol Editor" Height="450" Width="800">
-    <Grid>
+        Title="Assay Protocol Editor" Height="450" Width="800">
+    <DockPanel>
         <!--Main Menu-->
-        <Menu VerticalAlignment="Top">
+        <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_New" />
-                <MenuItem Header="_Open" />
-                <MenuItem Header="_Share" />
-                <MenuItem Header="_Exit" />
+                <MenuItem Header="_New"/>
+                <MenuItem Header="_Open"/>
+                <Separator/>
+                <MenuItem Header="_Save"/> <!--Only can save protocols which are not finalized-->
+                <Separator/>
+                <MenuItem Header="_Share"/>
+                <Separator/>
+                <MenuItem Header="_Exit"/>
             </MenuItem>
 
             <MenuItem Header="_Edit">
-                <MenuItem Header="_Find and Replace" />
-                <MenuItem Header="_Cut" />
-                <MenuItem Header="_Copy" />
-                <MenuItem Header="_Paste" />
-                <MenuItem Header="_Duplicate" />
-                <MenuItem Header="_Delete" />
+                <MenuItem Header="_Find and Replace"/>
+                <Separator/>
+                <MenuItem Header="_Undo"/>
+                <MenuItem Header="_Redo"/>
+                <Separator/>
+                <MenuItem Header="_Cut"/>
+                <MenuItem Header="_Copy"/>
+                <MenuItem Header="_Paste"/>
+                <MenuItem Header="_Duplicate"/>
+                <MenuItem Header="_Delete"/>
             </MenuItem>
 
             <MenuItem Header="_View">
-                <MenuItem Header="_Designer" />
-                <MenuItem Header="_Error List" />
-                <MenuItem Header="_Notifications" />
+                <MenuItem Header="_Actions">
+                    <MenuItem Header="_Pipetting Actions"/>
+                    <MenuItem Header="_Pipetting Gantry Actions"/>
+                    <Separator/>
+                    <MenuItem Header="_Imaging Gantry Actions"/>
+                    <MenuItem Header="_Imaging Actions"/>
+                    <Separator/>
+                    <MenuItem Header="_Tray Actions"/>
+                    <Separator/>
+                    <MenuItem Header="_Droplet Generation Actions"/>
+                    <Separator/>
+                    <MenuItem Header="_Thermocycling Actions"/>
+                    <Separator/>
+                    <MenuItem Header="_Magnet Actions"/>
+                    <Separator/>
+                    <MenuItem Header="_Heater/Shaker Actions"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="_Error List"/>
+                <MenuItem Header="_Notifications"/>
             </MenuItem>
 
             <MenuItem Header="_Git">
-                
+                <MenuItem Header="_New Branch"/>
+                <MenuItem Header="_Fetch"/>
+                <MenuItem Header="_Pull"/>
+                <MenuItem Header="_Push"/>
+                <MenuItem Header="_Stage"/>
             </MenuItem>
 
             <MenuItem Header="_Test">
-                
+                <MenuItem Header="_Tipless Test"/>
+                <MenuItem Header="_Dry Test"/>
+                <MenuItem Header="_Quick Tests"/>
             </MenuItem>
 
             <MenuItem Header="_Analyze">
-                
+                <MenuItem Header="_Generate Protocol Metrics">
+                    <MenuItem Header="_Pre-Run Metric Report"/>
+                    <MenuItem Header="_Post-Run Metric Report">
+                        <MenuItem Header="_Open"/>
+                        <MenuItem Header="_Current"/>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Configure"/>
+            </MenuItem>
+
+            <MenuItem Header="_Tools">
+                <MenuItem Header="_Coordinate Editor"/>
+                <MenuItem Header="_Designer"/>
+                <MenuItem Header="_Consumable Map">
+                    <MenuItem Header="_New"/>
+                    <MenuItem Header="_Load"/>
+                </MenuItem>
+                <MenuItem Header="_Reagents Map">
+                    <MenuItem Header="_New"/>
+                    <MenuItem Header="_Load"/>
+                </MenuItem>
+                <MenuItem Header="_Tip Box Map">
+                    <MenuItem Header="_New"/>
+                    <MenuItem Header="_Load"/>
+                </MenuItem>
             </MenuItem>
 
             <MenuItem Header="_Help">
-                <MenuItem Header="_About" />
+                <MenuItem Header="_About"/>
             </MenuItem>
         </Menu>
-    </Grid>
+        
+        <!-- Content -->
+        <Grid>
+            <!-- Main content goes here ... -->
+        </Grid>
+        
+        <!--Footer-->
+        <StatusBar VerticalAlignment="Bottom">
+            <StatusBarItem>
+                <TextBlock Text="{Binding Status}"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock>
+                    <Run Text="{Binding CurrentTime}"/>
+                    <Run Text=" "/>
+                    <Run Text="{Binding CurrentDate}"/>
+                </TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+    </DockPanel>
 </Window>
