@@ -126,5 +126,14 @@
   <ItemGroup>
     <Resource Include="Resources\protocol-editor-icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\coordinates-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\reagents-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pipette-icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
