@@ -56,9 +56,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\Shared\BannerViewModel.cs" />
     <Compile Include="ViewModels\Shared\DescriptorViewModel.cs" />
+    <Compile Include="ViewModels\Shared\InfoStampViewModel.cs" />
+    <Compile Include="Views\Shared\Banner.xaml.cs">
+      <DependentUpon>Banner.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shared\Descriptor.xaml.cs">
       <DependentUpon>Descriptor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\InfoStamp.xaml.cs">
+      <DependentUpon>InfoStamp.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -72,7 +80,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Shared\Banner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Shared\Descriptor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Shared\InfoStamp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,7 +124,7 @@
     <Folder Include="Views\MainWindow\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="References\protocol_editor.png" />
+    <Resource Include="Resources\protocol-editor-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
