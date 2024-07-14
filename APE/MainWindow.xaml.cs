@@ -67,7 +67,7 @@ namespace APE
                 {
                     Title = "Protocol",
                     Description = "Below is the current protocol than can be run, tested, and analyzed.",
-                },
+                }
             };
 
             // Set the DataContext

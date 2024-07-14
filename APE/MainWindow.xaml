@@ -123,7 +123,7 @@
                 <!-- Column Definitions -->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.5*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -138,7 +138,7 @@
                 <shared:InfoStamp Grid.Row="1" Grid.Column="3" DataContext="{Binding MyStatusInfoStampViewModel}"/>
                 <shared:InfoStamp Grid.Row="1" Grid.Column="4" DataContext="{Binding MyCoordinatesInfoStampViewModel}"/>
                 <shared:InfoStamp Grid.Row="1" Grid.Column="5" DataContext="{Binding MyReagentsInfoStampViewModel}"/>
-                <shared:InfoStamp Grid.Row="1" Grid.Column="6" DataContext="{Binding MyTipBoxMappingViewModel}"/>
+                <shared:InfoStamp Grid.Row="1" Grid.Column="6" DataContext="{Binding MyTipBoxMappingInfoStampViewModel}"/>
                 <shared:InfoStamp Grid.Row="1" Grid.Column="7" DataContext="{Binding MyVersionInfoStampViewModel}"/>
             </Grid>
             <!-- Protocol Progress Bar -->
