@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:APE"
         xmlns:shared="clr-namespace:APE.Views.Shared"
         mc:Ignorable="d"
-        Title="Assay Protocol Editor" Height="450" Width="800">
+        Title="Assay Protocol Editor" Height="650" Width="800">
     <DockPanel>
         <!--Main Menu-->
         <Menu DockPanel.Dock="Top">
@@ -14,7 +14,8 @@
                 <MenuItem Header="_New"/>
                 <MenuItem Header="_Open"/>
                 <Separator/>
-                <MenuItem Header="_Save"/> <!--Only can save protocols which are not finalized-->
+                <MenuItem Header="_Save"/>
+                <!--Only can save protocols which are not finalized-->
                 <Separator/>
                 <MenuItem Header="_Share"/>
                 <Separator/>
@@ -103,15 +104,57 @@
                 <MenuItem Header="_About"/>
             </MenuItem>
         </Menu>
-        
+
         <!-- Content -->
-        <Grid VerticalAlignment="Top">
-            <!-- Main content goes here ... -->
-            <!--<shared:Descriptor DataContext="{Binding MyProtocolDescriptorViewModel}"/>-->
+        <Grid DockPanel.Dock="Top">
+            <!-- Grid Row Definitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!-- Banner -->
+            <shared:Banner Grid.Row="0" DataContext="{Binding MyBannerViewModel}" />
+            
+            <!-- Info Stamps -->
+            <Grid Grid.Row="1">
+                <!-- Column Definitions -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <shared:InfoStamp Grid.Row="1" Grid.Column="0" DataContext="{Binding MyProtocolInfoStampViewModel}"/>
+                <shared:InfoStamp Grid.Row="1" Grid.Column="1" DataContext="{Binding MyShortDescriptionInfoStampViewModel}"/>
+                <shared:InfoStamp Grid.Row="1" Grid.Column="2" DataContext="{Binding MyAuthorInfoStampViewModel}"/>
+                <shared:InfoStamp Grid.Row="1" Grid.Column="3" DataContext="{Binding MyStatusInfoStampViewModel}"/>
+                <shared:InfoStamp Grid.Row="1" Grid.Column="4" DataContext="{Binding MyCoordinatesInfoStampViewModel}"/>
+                <shared:InfoStamp Grid.Row="1" Grid.Column="5" DataContext="{Binding MyReagentsInfoStampViewModel}"/>
+                <shared:InfoStamp Grid.Row="1" Grid.Column="6" DataContext="{Binding MyTipBoxMappingViewModel}"/>
+                <shared:InfoStamp Grid.Row="1" Grid.Column="7" DataContext="{Binding MyVersionInfoStampViewModel}"/>
+            </Grid>
+            <!-- Protocol Progress Bar -->
+            <shared:Descriptor Grid.Row="2" DataContext="{Binding MyProtocolDescriptorViewModel}"/>
+
+            <!-- Protocol Descriptor -->
+            <shared:Descriptor Grid.Row="3" DataContext="{Binding MyProtocolDescriptorViewModel}"/>
+            
+            <!-- Editor -->
+            <shared:Descriptor Grid.Row="4" DataContext="{Binding MyProtocolDescriptorViewModel}"/>
+
+
         </Grid>
-        
+
         <!--Footer-->
-        <StatusBar VerticalAlignment="Bottom">
+        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
             <StatusBarItem>
                 <TextBlock Text="{Binding Status}"/>
             </StatusBarItem>

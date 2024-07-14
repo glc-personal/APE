@@ -22,8 +22,16 @@ namespace APE.ViewModels
          * Main Content
          * --------------------------------------------------------------------------------------------------------
          */
+        public BannerViewModel MyBannerViewModel { get; set; }
+        public InfoStampViewModel MyProtocolInfoStampViewModel { get; set; }
+        public InfoStampViewModel MyShortDescriptionInfoStampViewModel { get; set; }
+        public InfoStampViewModel MyAuthorInfoStampViewModel { get; set; }
+        public InfoStampViewModel MyStatusInfoStampViewModel { get; set; }
+        public InfoStampViewModel MyCoordinatesInfoStampViewModel { get; set; }
+        public InfoStampViewModel MyReagentsInfoStampViewModel { get; set; }
+        public InfoStampViewModel MyTipBoxMappingInfoStampViewModel { get; set; }
+        public InfoStampViewModel MyVersionInfoStampViewModel { get; set; }
         public DescriptorViewModel MyProtocolDescriptorViewModel { get; set; }
-        public DescriptorViewModel MyOutputDescriptorViewModel { get; set; }
 
         /*
          * ----------------------------------------------------------------------------------------------------------------
