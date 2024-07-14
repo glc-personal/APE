@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APE"
+        xmlns:shared="clr-namespace:APE.Views.Shared"
         mc:Ignorable="d"
         Title="Assay Protocol Editor" Height="450" Width="800">
     <DockPanel>
@@ -104,8 +105,9 @@
         </Menu>
         
         <!-- Content -->
-        <Grid>
+        <Grid VerticalAlignment="Top">
             <!-- Main content goes here ... -->
+            <!--<shared:Descriptor DataContext="{Binding MyProtocolDescriptorViewModel}"/>-->
         </Grid>
         
         <!--Footer-->

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using APE.ViewModels.Shared;
+using System;
 using System.ComponentModel;
 using System.Timers;
 
@@ -15,6 +16,14 @@ namespace APE.ViewModels
         private string currentTime;
         private string currentDate;
         private Timer timer;
+
+        /*
+         * --------------------------------------------------------------------------------------------------------
+         * Main Content
+         * --------------------------------------------------------------------------------------------------------
+         */
+        public DescriptorViewModel MyProtocolDescriptorViewModel { get; set; }
+        public DescriptorViewModel MyOutputDescriptorViewModel { get; set; }
 
         /*
          * ----------------------------------------------------------------------------------------------------------------
