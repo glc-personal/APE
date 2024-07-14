@@ -107,5 +107,8 @@
     <Folder Include="HowTo\" />
     <Folder Include="Views\MainWindow\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="References\protocol_editor.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
