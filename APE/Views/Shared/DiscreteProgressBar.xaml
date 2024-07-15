@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="APE.Views.Shared.DiscreteProgressBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:APE.Views.Shared"
+             mc:Ignorable="d" 
+             Height="55" Width="Auto"
+             Background="LightGray">
+    <UserControl.Resources>
+    </UserControl.Resources>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <!-- Play Icon Button -->
+        <local:IconButton DataContext="{Binding PlayIconButton}" Margin="2"/>
+
+        <!-- Pause Icon Button -->
+        <local:IconButton DataContext="{Binding PauseIconButton}" Margin="2"/>
+
+        <!-- Stop Icon Button -->
+        <local:IconButton DataContext="{Binding StopIconButton}" Margin="2"/>
+
+        <!-- Progress Bars -->
+    </StackPanel>
+</UserControl>

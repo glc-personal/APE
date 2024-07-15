@@ -27,20 +27,15 @@
         <Style x:Key="BannerIconStyle" TargetType="Image">
             <Setter Property="Width" Value="50"/>
             <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="10 0 10 0"/>
         </Style>
     </UserControl.Resources>
-    <Grid>
-        <!-- Column definitions for the banner -->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="8*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
         <!-- Banner Icon -->
-        <Image Grid.Column="0" Source="{Binding IconPath}" Style="{StaticResource BannerIconStyle}"/>
+        <Image Source="{Binding IconPath}" Style="{StaticResource BannerIconStyle}"/>
 
         <!-- Banner Description and Tite -->
-        <Grid Grid.Column="1">
+        <Grid>
             <!-- Row Definitions -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -53,5 +48,5 @@
             <!-- Banner Title -->
             <TextBlock Grid.Row="1" Text="{Binding Title}" Style="{StaticResource BannerTitleStyle}"/>
         </Grid>
-    </Grid>
+    </StackPanel>
 </UserControl>

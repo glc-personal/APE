@@ -13,6 +13,7 @@ namespace APE.ViewModels
          * ----------------------------------------------------------------------------------------------------------------
          */
         private string status;
+        private string linkIconPath;
         private string currentTime;
         private string currentDate;
         private Timer timer;
@@ -31,6 +32,7 @@ namespace APE.ViewModels
         public InfoStampViewModel MyReagentsInfoStampViewModel { get; set; }
         public InfoStampViewModel MyTipBoxMappingInfoStampViewModel { get; set; }
         public InfoStampViewModel MyVersionInfoStampViewModel { get; set; }
+        public DiscreteProgressBarViewModel MyDiscreteProgressBarViewModel { get; set; }
         public DescriptorViewModel MyProtocolDescriptorViewModel { get; set; }
 
         /*
@@ -47,6 +49,7 @@ namespace APE.ViewModels
 
             // Setup the Status Bar
             status = "Ready";
+            linkIconPath = "pack://application:,,,/Resources/unlinked-icon.png";
             currentTime = DateTime.Now.ToString("hh:mm tt");
             currentDate = DateTime.Now.ToString("M/d/yyyy");
         }
@@ -63,6 +66,16 @@ namespace APE.ViewModels
             {
                 status = value;
                 OnPropertyChanged(nameof(Status));
+            }
+        }
+        public string LinkIconPath
+        {
+
+            get => linkIconPath;
+            set
+            {
+                linkIconPath = value;
+                OnPropertyChanged(nameof(LinkIconPath));
             }
         }
         public string CurrentTime

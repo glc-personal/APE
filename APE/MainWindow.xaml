@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:APE"
         xmlns:shared="clr-namespace:APE.Views.Shared"
         mc:Ignorable="d"
-        Title="Assay Protocol Editor" Height="650" Width="800">
+        Title="Assay Protocol Editor" Height="650" Width="800"
+        WindowState="Maximized">
+    <Window.Resources>
+        <Style x:Key="MainWindowLinkIconStyle" TargetType="Image">
+            <Setter Property="Width" Value="15"/>
+            <Setter Property="Height" Value="15"/>
+        </Style>
+    </Window.Resources>
     <DockPanel>
         <!--Main Menu-->
         <Menu DockPanel.Dock="Top">
@@ -119,36 +126,24 @@
             <shared:Banner Grid.Row="0" DataContext="{Binding MyBannerViewModel}" />
             
             <!-- Info Stamps -->
-            <Grid Grid.Row="1">
-                <!-- Column Definitions -->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="1.5*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <shared:InfoStamp Grid.Row="1" Grid.Column="0" DataContext="{Binding MyProtocolInfoStampViewModel}"/>
-                <shared:InfoStamp Grid.Row="1" Grid.Column="1" DataContext="{Binding MyShortDescriptionInfoStampViewModel}"/>
-                <shared:InfoStamp Grid.Row="1" Grid.Column="2" DataContext="{Binding MyAuthorInfoStampViewModel}"/>
-                <shared:InfoStamp Grid.Row="1" Grid.Column="3" DataContext="{Binding MyStatusInfoStampViewModel}"/>
-                <shared:InfoStamp Grid.Row="1" Grid.Column="4" DataContext="{Binding MyCoordinatesInfoStampViewModel}"/>
-                <shared:InfoStamp Grid.Row="1" Grid.Column="5" DataContext="{Binding MyReagentsInfoStampViewModel}"/>
-                <shared:InfoStamp Grid.Row="1" Grid.Column="6" DataContext="{Binding MyTipBoxMappingInfoStampViewModel}"/>
-                <shared:InfoStamp Grid.Row="1" Grid.Column="7" DataContext="{Binding MyVersionInfoStampViewModel}"/>
-            </Grid>
+            <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <shared:InfoStamp DataContext="{Binding MyProtocolInfoStampViewModel}" Margin="0 0 50 0"/>
+                <shared:InfoStamp DataContext="{Binding MyShortDescriptionInfoStampViewModel}" Margin="0 0 50 0"/>
+                <shared:InfoStamp DataContext="{Binding MyAuthorInfoStampViewModel}" Margin="0 0 50 0"/>
+                <shared:InfoStamp DataContext="{Binding MyStatusInfoStampViewModel}" Margin="0 0 50 0"/>
+                <shared:InfoStamp DataContext="{Binding MyCoordinatesInfoStampViewModel}" Margin="0 0 50 0"/>
+                <shared:InfoStamp DataContext="{Binding MyReagentsInfoStampViewModel}" Margin="0 0 50 0"/>
+                <shared:InfoStamp DataContext="{Binding MyTipBoxMappingInfoStampViewModel}" Margin="0 0 50 0"/>
+                <shared:InfoStamp DataContext="{Binding MyVersionInfoStampViewModel}" Margin="0 0 50 0"/>
+            </WrapPanel>
+            
             <!-- Protocol Progress Bar -->
-            <shared:Descriptor Grid.Row="2" DataContext="{Binding MyProtocolDescriptorViewModel}"/>
+            <shared:DiscreteProgressBar Grid.Row="2" DataContext="{Binding MyDiscreteProgressBarViewModel}"/>
 
             <!-- Protocol Descriptor -->
             <shared:Descriptor Grid.Row="3" DataContext="{Binding MyProtocolDescriptorViewModel}"/>
             
             <!-- Editor -->
-            <shared:Descriptor Grid.Row="4" DataContext="{Binding MyProtocolDescriptorViewModel}"/>
 
 
         </Grid>
@@ -157,6 +152,9 @@
         <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
             <StatusBarItem>
                 <TextBlock Text="{Binding Status}"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <Image Source="{Binding LinkIconPath}" Style="{StaticResource MainWindowLinkIconStyle}"/>
             </StatusBarItem>
             <StatusBarItem HorizontalAlignment="Right">
                 <TextBlock>

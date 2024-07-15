@@ -63,6 +63,21 @@ namespace APE
                     Title = "Version",
                     Description = "1.2.7",
                 },
+                MyDiscreteProgressBarViewModel = new DiscreteProgressBarViewModel
+                {
+                    PlayIconButton = new IconButtonViewModel
+                    {
+                        IconPath = "pack://application:,,,/Resources/play-icon.png",
+                    },
+                    PauseIconButton = new IconButtonViewModel
+                    {
+                        IconPath = "pack://application:,,,/Resources/pause-icon.png",
+                    },
+                    StopIconButton = new IconButtonViewModel
+                    {
+                        IconPath = "pack://application:,,,/Resources/stop-icon.png",
+                    },
+                },
                 MyProtocolDescriptorViewModel = new DescriptorViewModel
                 {
                     Title = "Protocol",
