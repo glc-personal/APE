@@ -1,6 +1,7 @@
 ﻿using APE.ViewModels;
 using System.Windows;
 using APE.ViewModels.Shared;
+using APE.Commands;
 
 namespace APE
 {
@@ -13,6 +14,9 @@ namespace APE
         public MainWindow()
         {
             InitializeComponent();
+
+            // Setup the view model
+            ViewModel = new MainWindowViewModel();
 
             // Setup the view model
             ViewModel = new MainWindowViewModel
@@ -68,14 +72,17 @@ namespace APE
                     PlayIconButton = new IconButtonViewModel
                     {
                         IconPath = "pack://application:,,,/Resources/play-icon.png",
+                        Command = ViewModel.PlayCommand,
                     },
                     PauseIconButton = new IconButtonViewModel
                     {
                         IconPath = "pack://application:,,,/Resources/pause-icon.png",
+                        Command = ViewModel.PauseCommand,
                     },
                     StopIconButton = new IconButtonViewModel
                     {
                         IconPath = "pack://application:,,,/Resources/stop-icon.png",
+                        Command = ViewModel.StopCommand,
                     },
                 },
                 MyProtocolDescriptorViewModel = new DescriptorViewModel

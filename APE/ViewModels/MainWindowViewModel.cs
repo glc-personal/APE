@@ -1,7 +1,11 @@
-﻿using APE.ViewModels.Shared;
+﻿using APE.Commands;
+using APE.ViewModels.Shared;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Timers;
+using System.Windows;
+using System.Windows.Input;
 
 namespace APE.ViewModels
 {
@@ -9,7 +13,7 @@ namespace APE.ViewModels
     {
         /*
          * ----------------------------------------------------------------------------------------------------------------
-         * Status Bar Variables
+         * Private Attributes
          * ----------------------------------------------------------------------------------------------------------------
          */
         private string status;
@@ -17,6 +21,9 @@ namespace APE.ViewModels
         private string currentTime;
         private string currentDate;
         private Timer timer;
+        private ICommand playCommand;
+        private ICommand pauseCommand;
+        private ICommand stopCommand;
 
         /*
          * --------------------------------------------------------------------------------------------------------
@@ -34,6 +41,73 @@ namespace APE.ViewModels
         public InfoStampViewModel MyVersionInfoStampViewModel { get; set; }
         public DiscreteProgressBarViewModel MyDiscreteProgressBarViewModel { get; set; }
         public DescriptorViewModel MyProtocolDescriptorViewModel { get; set; }
+
+        /*
+         * ----------------------------------------------------------------------------------------------------------------
+         * Commands
+         * ----------------------------------------------------------------------------------------------------------------
+         */
+        public ICommand PlayCommand
+        {
+            get
+            {
+                if (playCommand == null)
+                {
+                    playCommand = new RelayCommand(ExecutePlayCommand, CanExecutePlayCommand);
+                }
+                return playCommand;
+            }
+        }
+        private void ExecutePlayCommand(object parameter)
+        {
+            MessageBox.Show("Play");
+        }
+        private bool CanExecutePlayCommand(object parameter)
+        {
+            // Logic for checking if the play command can be executed
+            return true;
+        }
+
+        public ICommand PauseCommand
+        {
+            get
+            {
+                if (pauseCommand == null)
+                {
+                    pauseCommand = new RelayCommand(ExecutePauseCommand, CanExecutePauseCommand);
+                }
+                return pauseCommand;
+            }
+        }
+        private void ExecutePauseCommand(object parameter)
+        {
+            MessageBox.Show("Pause");
+        }
+        private bool CanExecutePauseCommand(object parameter)
+        {
+            // Logic for if the pause command can be exectured
+            return true;
+        }
+        public ICommand StopCommand
+        {
+            get
+            {
+                if (stopCommand == null)
+                {
+                    stopCommand = new RelayCommand(ExecuteStopCommand, CanExecuteStopCommand);
+                }
+                return stopCommand;
+            }
+        }
+        public void ExecuteStopCommand(object parameter)
+        {
+            MessageBox.Show("Stop");
+        }
+        public bool CanExecuteStopCommand(object parameter)
+        {
+            // Logic for if the stop command can be execute
+            return true;
+        }
 
         /*
          * ----------------------------------------------------------------------------------------------------------------
