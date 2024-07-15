@@ -144,7 +144,6 @@
             <shared:Descriptor Grid.Row="3" DataContext="{Binding MyProtocolDescriptorViewModel}"/>
             
             <!-- Editor -->
-            <shared:Descriptor Grid.Row="4" DataContext="{Binding MyProtocolDescriptorViewModel}"/>
 
 
         </Grid>
