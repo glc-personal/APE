@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="APE.Views.Shared.ProtocolEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:APE.Views.Shared"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="ProtocolEditorHeaderRowStyle" TargetType="TableRow">
+            <Setter Property="Background" Value="LightGoldenrodYellow"/>
+        </Style>
+        <Style x:Key="ProtocolEditorHeaderParagraphStyle" TargetType="Paragraph">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ProtocolEditorEvenRowStyle" TargetType="TableRow">
+            <Setter Property="Background" Value="White"/>
+        </Style>
+        <Style x:Key="ProtocolEditorOddRowStyle" TargetType="TableRow">
+            <Setter Property="Background" Value="LightGray"/>
+        </Style>
+        <Style x:Key="ProtocolEditorStepParagraphStyle" TargetType="Paragraph">
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="Light" />
+        </Style>
+    </UserControl.Resources>
+    <FlowDocumentScrollViewer>
+        <FlowDocument>
+            <Table CellSpacing="5">
+                <!-- Table Columns -->
+                <Table.Columns>
+                    <!-- Id -->
+                    <TableColumn Width="0.5*"/>
+                    <!-- Step -->
+                    <TableColumn Width="2*"/>
+                    <!-- Description -->
+                    <TableColumn Width="6*"/>
+                    <!-- Status -->
+                    <TableColumn Width="1.5*"/>
+                </Table.Columns>
+
+                <!-- Table Content -->
+                <TableRowGroup>
+                    <!-- Table Headers -->
+                    <TableRow Style="{StaticResource ProtocolEditorHeaderRowStyle}">
+                        <TableCell>
+                            <Paragraph Style="{StaticResource ProtocolEditorHeaderParagraphStyle}">Id</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph Style="{StaticResource ProtocolEditorHeaderParagraphStyle}">Step</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph Style="{StaticResource ProtocolEditorHeaderParagraphStyle}">Description</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph Style="{StaticResource ProtocolEditorHeaderParagraphStyle}">Status</Paragraph>
+                        </TableCell>
+                    </TableRow>
+                </TableRowGroup>
+            </Table>
+        </FlowDocument>
+    </FlowDocumentScrollViewer>
+</UserControl>

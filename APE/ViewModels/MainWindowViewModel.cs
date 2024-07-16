@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace APE.ViewModels
 {
@@ -24,6 +25,8 @@ namespace APE.ViewModels
         private ICommand playCommand;
         private ICommand pauseCommand;
         private ICommand stopCommand;
+        private Brush statusBarBackground;
+        private Brush statusBarForeground;
 
         /*
          * --------------------------------------------------------------------------------------------------------
@@ -61,6 +64,11 @@ namespace APE.ViewModels
         private void ExecutePlayCommand(object parameter)
         {
             MessageBox.Show("Play");
+            Application.Current.Dispatcher.Invoke(() => {
+                LinkIconPath = "pack://application:,,,/Resources/unlinked-white-icon.png";
+                StatusBarBackground = Brushes.Purple;
+                StatusBarForeground = Brushes.White;
+            });
         }
         private bool CanExecutePlayCommand(object parameter)
         {
@@ -82,6 +90,12 @@ namespace APE.ViewModels
         private void ExecutePauseCommand(object parameter)
         {
             MessageBox.Show("Pause");
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                LinkIconPath = "pack://application:,,,/Resources/unlinked-black-icon.png";
+                StatusBarBackground = Brushes.Gold;
+                StatusBarForeground = Brushes.Black;
+            });            
         }
         private bool CanExecutePauseCommand(object parameter)
         {
@@ -102,6 +116,12 @@ namespace APE.ViewModels
         public void ExecuteStopCommand(object parameter)
         {
             MessageBox.Show("Stop");
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                LinkIconPath = "pack://application:,,,/Resources/unlinked-black-icon.png";
+                StatusBarBackground = Brushes.LightGray;
+                StatusBarForeground = Brushes.Black;
+            });
         }
         public bool CanExecuteStopCommand(object parameter)
         {
@@ -119,13 +139,7 @@ namespace APE.ViewModels
             // Setup the timer
             timer = new Timer(1000); // Update every 1 second
             timer.Elapsed += TimerElapsed;
-            timer.Start();
-
-            // Setup the Status Bar
-            status = "Ready";
-            linkIconPath = "pack://application:,,,/Resources/unlinked-icon.png";
-            currentTime = DateTime.Now.ToString("hh:mm tt");
-            currentDate = DateTime.Now.ToString("M/d/yyyy");
+            timer.Start();            
         }
 
         /*
@@ -170,6 +184,30 @@ namespace APE.ViewModels
                 OnPropertyChanged(nameof(CurrentDate));
             }
         }
+        public Brush StatusBarBackground
+        {
+            get => statusBarBackground;
+            set
+            {
+                if (statusBarBackground != value)
+                {
+                    statusBarBackground = value;
+                    OnPropertyChanged(nameof(StatusBarBackground));
+                }
+            }
+        }
+        public Brush StatusBarForeground
+        {
+            get => statusBarForeground;
+            set
+            {
+                if (statusBarForeground != value)
+                {
+                    statusBarForeground = value;
+                    OnPropertyChanged(nameof(StatusBarForeground));
+                }               
+            }
+        }
 
         /*
          * ----------------------------------------------------------------------------------------------------------------
@@ -178,7 +216,7 @@ namespace APE.ViewModels
          */
         private void TimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            CurrentTime = DateTime.Now.ToString("hh:mm tt");
+            CurrentTime = DateTime.Now.ToString("hh:mm:ss tt");
             CurrentDate = DateTime.Now.ToString("M/d/yyyy");
         }
 

@@ -52,7 +52,6 @@
     <Button Command="{Binding Command}" Style="{StaticResource IconButtonStyle}">
         <StackPanel Orientation="Horizontal">
             <Image Source="{Binding IconPath}" Style="{StaticResource IconButtonImageStyle}"/>
-            <ContentPresenter Content="{Binding Content}"/>
         </StackPanel>
     </Button>
 </UserControl>

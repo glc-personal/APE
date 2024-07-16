@@ -87,6 +87,9 @@
     <Compile Include="Views\Shared\ProgressBar.xaml.cs">
       <DependentUpon>ProgressBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shared\ProtocolEditor.xaml.cs">
+      <DependentUpon>ProtocolEditor.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Shared\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Shared\ProtocolEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,10 +181,10 @@
     <Resource Include="Resources\warning-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\unlinked-icon.png" />
+    <Resource Include="Resources\unlinked-black-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\linked-icon.png" />
+    <Resource Include="Resources\linked-black-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\pause-icon.png" />
@@ -187,6 +194,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\bio-rad-icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\plus-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\follow-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\add-step-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\linked-white-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\unlinked-white-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
