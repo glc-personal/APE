@@ -6,15 +6,15 @@
              xmlns:local="clr-namespace:APE.Views.Shared"
              xmlns:converters="clr-namespace:APE.Converters"
              mc:Ignorable="d" 
-             Height="40" Width="150"
-             BorderBrush="Black"
-             BorderThickness="1"
+             Height="40" Width="265"
              Margin="0 0 5 0">
     <UserControl.Resources>
         <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
     </UserControl.Resources>
     <Border Background="{Binding IsCompleted, Converter={StaticResource BoolToColorConverter}}" 
-            CornerRadius="{Binding CornerRadius}">
-        <Grid/>
+            CornerRadius="{Binding CornerRadius}" BorderBrush="Black" BorderThickness="1">
+        <Border CornerRadius="{Binding CornerRadius}">
+            <Grid/>
+        </Border>   
     </Border>
 </UserControl>

@@ -18,6 +18,7 @@ namespace APE.ViewModels.Shared
          * Public Attributes
          * --------------------------------------------------------------------------------------------------------
          */
+        public static double Radius = 10;
         public bool IsCompleted
         {
             get => isCompleted;

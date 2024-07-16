@@ -41,13 +41,41 @@ namespace APE.ViewModels.Shared
         public DiscreteProgressBarViewModel(int numberOfBars = 1)
         {
             // Initialize the collection of progress bars
+            double R = ProgressBarViewModel.Radius;
             ProgressBars = new ObservableCollection<ProgressBarViewModel>();
             for (int i = 0; i < numberOfBars; i++)
             {
+                // Setup the corners
+                double topLeft = 0;
+                double topRight = 0;
+                double bottomLeft = 0;
+                double bottomRight = 0;
+                // If there is only one bar, round all sides
+                if (numberOfBars == 1)
+                {
+                    topLeft = R;
+                    bottomLeft = R;
+                    topRight = R;
+                    bottomRight = R;
+                }
+                // Setup the progress bar corners
+                else
+                {
+                    if (i == 0)
+                    {
+                        topLeft = R;
+                        bottomLeft = R;
+                    }
+                    else if (i == numberOfBars - 1)
+                    {
+                        topRight = R;
+                        bottomRight = R;
+                    }
+                }
                 ProgressBars.Add(new ProgressBarViewModel
                 {
                     IsCompleted = false,
-                    CornerRadius = new CornerRadius(5)
+                    CornerRadius = new CornerRadius(topLeft, topRight, bottomRight, bottomLeft)
                 });
             }
         }
