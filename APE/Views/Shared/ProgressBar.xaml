@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:APE.Views.Shared"
              xmlns:converters="clr-namespace:APE.Converters"
              mc:Ignorable="d" 
-             Height="40" Width="265"
+             Height="40"
              Margin="0 0 5 0">
     <UserControl.Resources>
         <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>

@@ -12,28 +12,32 @@
         <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
         <converters:IndexToCornerRadiusConverter x:Key="IndexToCornerRadiusConverter"/>
     </UserControl.Resources>
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-        <!-- Play Icon Button -->
-        <local:IconButton DataContext="{Binding PlayIconButton}" Margin="2"/>
+    <DockPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <!-- Play Icon Button -->
+            <local:IconButton DataContext="{Binding PlayIconButton}" Margin="2"/>
 
-        <!-- Pause Icon Button -->
-        <local:IconButton DataContext="{Binding PauseIconButton}" Margin="2"/>
+            <!-- Pause Icon Button -->
+            <local:IconButton DataContext="{Binding PauseIconButton}" Margin="2"/>
 
-        <!-- Stop Icon Button -->
-        <local:IconButton DataContext="{Binding StopIconButton}" Margin="2"/>
+            <!-- Stop Icon Button -->
+            <local:IconButton DataContext="{Binding StopIconButton}" Margin="2"/>
+        </StackPanel>
 
         <!-- Progress Bars -->
-        <ItemsControl ItemsSource="{Binding ProgressBars}">
+        <ItemsControl ItemsSource="{Binding ProgressBars}" DockPanel.Dock="Right">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal"/>
+                    <UniformGrid Columns="{Binding ProgressBars.Count}"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <local:ProgressBar DataContext="{Binding}"/>
+                    <local:ProgressBar Width="Auto"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-    </StackPanel>
+        
+    </DockPanel>
+    
 </UserControl>

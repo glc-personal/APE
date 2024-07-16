@@ -67,7 +67,7 @@ namespace APE
                     Title = "Version",
                     Description = "1.2.7",
                 },
-                MyDiscreteProgressBarViewModel = new DiscreteProgressBarViewModel(5)
+                MyDiscreteProgressBarViewModel = new DiscreteProgressBarViewModel
                 {
                     PlayIconButton = new IconButtonViewModel
                     {

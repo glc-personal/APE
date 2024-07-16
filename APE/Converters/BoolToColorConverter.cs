@@ -10,7 +10,7 @@ namespace APE.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             bool isCompleted = (bool)value;
-            return isCompleted ? Brushes.Blue : Brushes.LightBlue;
+            return isCompleted ? Brushes.SeaGreen : Brushes.LightBlue;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

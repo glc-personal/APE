@@ -37,7 +37,17 @@ namespace APE.ViewModels.Shared
          * Constructor
          * --------------------------------------------------------------------------------------------------------
          */
-        public DiscreteProgressBarViewModel() { }
+        public DiscreteProgressBarViewModel() 
+        {
+            // Initialize the collection of progress bars
+            double R = ProgressBarViewModel.Radius;
+            ProgressBars = new ObservableCollection<ProgressBarViewModel>();
+            ProgressBars.Add(new ProgressBarViewModel
+            {
+                IsCompleted = false,
+                CornerRadius = new CornerRadius(R, R, R, R)
+            });
+        }
         public DiscreteProgressBarViewModel(int numberOfBars = 1)
         {
             // Initialize the collection of progress bars
