@@ -4,10 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:APE.Views.Shared"
+             xmlns:converters="clr-namespace:APE.Converters"
              mc:Ignorable="d" 
              Height="55" Width="Auto"
              Background="LightGray">
     <UserControl.Resources>
+        <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
+        <converters:IndexToCornerRadiusConverter x:Key="IndexToCornerRadiusConverter"/>
     </UserControl.Resources>
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
         <!-- Play Icon Button -->
@@ -20,5 +23,17 @@
         <local:IconButton DataContext="{Binding StopIconButton}" Margin="2"/>
 
         <!-- Progress Bars -->
+        <ItemsControl ItemsSource="{Binding ProgressBars}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:ProgressBar DataContext="{Binding}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </StackPanel>
 </UserControl>

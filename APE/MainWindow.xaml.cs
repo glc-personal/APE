@@ -1,7 +1,7 @@
 ﻿using APE.ViewModels;
 using System.Windows;
+using System.Collections.ObjectModel;
 using APE.ViewModels.Shared;
-using APE.Commands;
 
 namespace APE
 {
@@ -67,7 +67,7 @@ namespace APE
                     Title = "Version",
                     Description = "1.2.7",
                 },
-                MyDiscreteProgressBarViewModel = new DiscreteProgressBarViewModel
+                MyDiscreteProgressBarViewModel = new DiscreteProgressBarViewModel(5)
                 {
                     PlayIconButton = new IconButtonViewModel
                     {

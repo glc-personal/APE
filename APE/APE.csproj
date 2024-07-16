@@ -60,12 +60,15 @@
     </ApplicationDefinition>
     <Compile Include="Commands\IRelayCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Converters\BoolToColorConverter.cs" />
+    <Compile Include="Converters\IndexToCornerRadiusConverter.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\Shared\BannerViewModel.cs" />
     <Compile Include="ViewModels\Shared\DescriptorViewModel.cs" />
     <Compile Include="ViewModels\Shared\DiscreteProgressBarViewModel.cs" />
     <Compile Include="ViewModels\Shared\IconButtonViewModel.cs" />
     <Compile Include="ViewModels\Shared\InfoStampViewModel.cs" />
+    <Compile Include="ViewModels\Shared\ProgressBarViewModel.cs" />
     <Compile Include="Views\Shared\Banner.xaml.cs">
       <DependentUpon>Banner.xaml</DependentUpon>
     </Compile>
@@ -80,6 +83,9 @@
     </Compile>
     <Compile Include="Views\Shared\InfoStamp.xaml.cs">
       <DependentUpon>InfoStamp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\ProgressBar.xaml.cs">
+      <DependentUpon>ProgressBar.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -110,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Shared\InfoStamp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Shared\ProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
