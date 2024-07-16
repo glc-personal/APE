@@ -144,12 +144,13 @@
             <shared:Descriptor Grid.Row="3" DataContext="{Binding MyProtocolDescriptorViewModel}"/>
             
             <!-- Editor -->
-
+            <shared:ProtocolEditor Grid.Row="4"/>
 
         </Grid>
 
         <!--Footer-->
-        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" 
+                   Background="{Binding StatusBarBackground}" Foreground="{Binding StatusBarForeground}">
             <StatusBarItem>
                 <TextBlock Text="{Binding Status}"/>
             </StatusBarItem>
