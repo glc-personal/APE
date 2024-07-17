@@ -12,6 +12,7 @@ namespace APE.ViewModels.Shared
          */
         private bool isCompleted;
         private CornerRadius cornerRadius;
+        private double progressRatio;
 
         /*
          * --------------------------------------------------------------------------------------------------------
@@ -35,6 +36,15 @@ namespace APE.ViewModels.Shared
             {
                 cornerRadius = value;
                 OnPropertyChanged(nameof(CornerRadius));
+            }
+        }
+        public double ProgressRatio
+        {
+            get => progressRatio;
+            set
+            {
+                progressRatio = value;
+                OnPropertyChanged(nameof(ProgressRatio));
             }
         }
 

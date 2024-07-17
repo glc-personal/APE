@@ -63,7 +63,6 @@ namespace APE.ViewModels
         }
         private void ExecutePlayCommand(object parameter)
         {
-            MessageBox.Show("Play");
             Application.Current.Dispatcher.Invoke(() => {
                 LinkIconPath = "pack://application:,,,/Resources/unlinked-white-icon.png";
                 StatusBarBackground = Brushes.Purple;
@@ -89,7 +88,6 @@ namespace APE.ViewModels
         }
         private void ExecutePauseCommand(object parameter)
         {
-            MessageBox.Show("Pause");
             Application.Current.Dispatcher.Invoke(() =>
             {
                 LinkIconPath = "pack://application:,,,/Resources/unlinked-black-icon.png";
@@ -115,13 +113,17 @@ namespace APE.ViewModels
         }
         public void ExecuteStopCommand(object parameter)
         {
-            MessageBox.Show("Stop");
-            Application.Current.Dispatcher.Invoke(() =>
+            var result = MessageBox.Show("Are you sure you want to stop the protocol?",
+                "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
             {
-                LinkIconPath = "pack://application:,,,/Resources/unlinked-black-icon.png";
-                StatusBarBackground = Brushes.LightGray;
-                StatusBarForeground = Brushes.Black;
-            });
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    LinkIconPath = "pack://application:,,,/Resources/unlinked-black-icon.png";
+                    StatusBarBackground = Brushes.LightGray;
+                    StatusBarForeground = Brushes.Black;
+                });
+            }          
         }
         public bool CanExecuteStopCommand(object parameter)
         {
