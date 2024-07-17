@@ -28,22 +28,22 @@ namespace APE
             ViewModel.MyProtocolInfoStampViewModel = new InfoStampViewModel
             {
                 Title = "Protocol",
-                Description = "ICP7"
+                Description = "-"
             };
             ViewModel.MyShortDescriptionInfoStampViewModel = new InfoStampViewModel
             {
                 Title = "Short Description",
-                Description = "Integration checkpoint protocol"
+                Description = "No protocol loaded"
             };
             ViewModel.MyAuthorInfoStampViewModel = new InfoStampViewModel
             {
                 Title = "Author",
-                Description = "glc-biorad"
+                Description = "-"
             };
             ViewModel.MyStatusInfoStampViewModel = new InfoStampViewModel
             {
                 Title = "Status",
-                Description = "Transfer Reagent - (Elution Buffer)"
+                Description = "Ready"
             };
             ViewModel.MyCoordinatesInfoStampViewModel = new InfoStampViewModel
             {
@@ -63,9 +63,9 @@ namespace APE
             ViewModel.MyVersionInfoStampViewModel = new InfoStampViewModel
             {
                 Title = "Version",
-                Description = "1.2.7",
+                Description = "N/A",
             };
-            ViewModel.MyDiscreteProgressBarViewModel = new DiscreteProgressBarViewModel
+            ViewModel.MyDiscreteProgressBarViewModel = new DiscreteProgressBarViewModel(numberOfBars: 1)
             {
                 PlayIconButton = new IconButtonViewModel
                 {
