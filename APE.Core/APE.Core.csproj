@@ -41,14 +41,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enumerations\ColumnEnum.cs" />
+    <Compile Include="Enumerations\MixTypeEnum.cs" />
+    <Compile Include="Enumerations\RowEnum.cs" />
+    <Compile Include="Enumerations\SampleTypeEnum.cs" />
     <Compile Include="Enumerations\StatusEnum.cs" />
+    <Compile Include="Enumerations\TrayEnum.cs" />
+    <Compile Include="Enumerations\ViscosityEnum.cs" />
+    <Compile Include="Implementations\AddReagentProtocolStep.cs" />
+    <Compile Include="Implementations\AddSampleProtocolStep.cs" />
+    <Compile Include="Implementations\LiquidClass.cs" />
+    <Compile Include="Implementations\Location.cs" />
+    <Compile Include="Implementations\Protocol.cs" />
+    <Compile Include="Implementations\ProtocolStepBase.cs" />
+    <Compile Include="Implementations\Reagent.cs" />
+    <Compile Include="Implementations\Sample.cs" />
+    <Compile Include="Implementations\Tip.cs" />
+    <Compile Include="Implementations\TransferSolutionProtocolStep.cs" />
+    <Compile Include="Implementations\User.cs" />
+    <Compile Include="Interfaces\IAddReagentProtocolStep.cs" />
+    <Compile Include="Interfaces\ILiquidClass.cs" />
+    <Compile Include="Interfaces\ILocation.cs" />
+    <Compile Include="Interfaces\IProtocol.cs" />
+    <Compile Include="Interfaces\IProtocolStep.cs" />
+    <Compile Include="Interfaces\IAddSampleProtocolStep.cs" />
+    <Compile Include="Interfaces\IReagent.cs" />
+    <Compile Include="Interfaces\ISample.cs" />
+    <Compile Include="Interfaces\ITip.cs" />
+    <Compile Include="Interfaces\ITransferSolutionProtocolStep.cs" />
+    <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HowTo\" />
-    <Folder Include="Implementations\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
