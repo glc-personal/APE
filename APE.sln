@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APE.ApplicationServices", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APE.Utilities", "APE.Utilities\APE.Utilities.csproj", "{AA7C0CAB-0F81-4ECC-BC21-265EADC3B026}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APE.DataAccess", "APE.DataAccess\APE.DataAccess.csproj", "{57837761-871E-4C06-B792-FA4BF82ED5EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{AA7C0CAB-0F81-4ECC-BC21-265EADC3B026}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA7C0CAB-0F81-4ECC-BC21-265EADC3B026}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA7C0CAB-0F81-4ECC-BC21-265EADC3B026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57837761-871E-4C06-B792-FA4BF82ED5EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57837761-871E-4C06-B792-FA4BF82ED5EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57837761-871E-4C06-B792-FA4BF82ED5EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57837761-871E-4C06-B792-FA4BF82ED5EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

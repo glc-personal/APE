@@ -9,5 +9,14 @@ namespace APE.Core.Enumerations
 
         [Description("Busy")]
         Busy,
+
+        [Description("Complete")]
+        Complete,
+
+        [Description("In-Progress")]
+        InProgress,
+
+        [Description("Not Started")]
+        NotStarted,
     }
 }
