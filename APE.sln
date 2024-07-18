@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APE", "APE\APE.csproj", "{16FF5A42-2802-4E42-8A55-56EA70DE9ACE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APE", "APE\APE.csproj", "{16FF5A42-2802-4E42-8A55-56EA70DE9ACE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
