@@ -8,6 +8,8 @@ namespace APE.DataAccess.Interfaces
 {
     public interface IProtocolRepository : IRepository<Protocol>
     {
-        Task<IEnumerable<IProtocolStep>> GetProtocolStepsAsync(int protocolId);
+        //Task<IEnumerable<IProtocol>> GetProtocolsAsync();
+        //Task<IProtocol> GetProtocolByIdAsync(int protocolId);
+        //Task<IEnumerable<IProtocolStep>> GetProtocolStepsAsync(int protocolId);
     }
 }
