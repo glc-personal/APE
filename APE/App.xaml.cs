@@ -1,11 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Windows;
 using APE.ViewModels;
-using APE.DataAccess;
-using APE.DataAccess.Interfaces;
-using APE.DataAccess.Repositories;
 
 namespace APE
 {
@@ -22,12 +18,6 @@ namespace APE
 
         private void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<APEContext>(options =>
-                options.UseSqlServer("\"Server=GLC-G15\\\\SQLEXPRESS;Database=APE;Trusted_Connection=True;\"\r\n"));
-
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            //services.AddScoped<IProtocolRepository, ProtocolRepository>();
-
             // Register your view models, etc.
             services.AddTransient<MainWindow>();
             services.AddTransient<MainWindowViewModel>();

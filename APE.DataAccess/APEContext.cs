@@ -19,6 +19,17 @@ namespace APE.DataAccess
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Protocol>()
+                .HasMany(p => p.Steps);
+
+            modelBuilder.Entity<IProtocolStep>()
+                .HasDiscriminator<string>("StepType")
+                .HasValue<IProtocolStep>("ProtocolStep")
+                .HasValue<AddSampleProtocolStep>("AddSampleProtocolStep")
+                .HasValue<AddReagentProtocolStep>("AddReagentProtocolStep")
+                .HasValue<TransferSolutionProtocolStep>("TransferSolutionProtocolStep");
+
+
             // Default Data setup goes here
             /*
             modelBuilder.Entity<Protocol>().HasData(
