@@ -1,0 +1,74 @@
+@startuml
+interface IProtocolStep {
+  + int Id
+  + string Name
+  + string Description
+  + StatusEnum Status
+}
+
+class Protocol {
+  + int Id
+  + string Name
+  + string Description
+  + ObservableCollection<IProtocolStep> Steps
+  + IUser Author
+  + DateTime DateCreatedOn
+  + Version Version
+}
+
+class AddSampleProtocolStep {
+  + ISample Sample
+  + int Volume
+  + ILocation Destintation
+}
+
+class AddReagentProtocolStep {
+  + IReagent Reagent
+  + int Volume
+  + ILocation Destination
+}
+
+class TransferSolutionProtocolStep {
+  + ILiquidClass LiquidClass
+  + int Volume
+  + ILocation Origin
+  + ILocation Destination
+}
+
+interface ILiquidClass {
+  + int Id
+  + string Name
+  + IUser Author
+  + DateTime DateCreatedOn 
+  + IViscosity Viscosity
+}
+
+interface IViscosity {
+  + double Value
+}
+
+interface ISample {
+  + int Id
+  + int PatientId
+  + SampleTypeEnum SampleType
+}
+
+interface IReagent {
+  + int Id
+  + ILiquidClass LiquidClass
+}
+
+
+IProtocolStep -down-> AddSampleProtocolStep
+IProtocolStep -down-> AddReagentProtocolStep
+IProtocolStep -down-> TransferSolutionProtocolStep
+ISample -down-> AddSampleProtocolStep
+IReagent -down-> AddReagentProtocolStep
+IViscosity -down-> ILiquidClass
+AddSampleProtocolStep --> Protocol
+AddReagentProtocolStep --> Protocol
+TransferSolutionProtocolStep --> Protocol
+ILiquidClass -down-> ISample
+ILiquidClass -down-> IReagent
+
+@enduml
