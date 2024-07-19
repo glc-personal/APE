@@ -6,6 +6,8 @@ using APE.ViewModels;
 using APE.DataAccess;
 using APE.DataAccess.Interfaces;
 using APE.DataAccess.Repositories;
+using APE.Core.Interfaces;
+using APE.Core.Implementation;
 
 namespace APE
 {
@@ -26,6 +28,7 @@ namespace APE
             services.AddDbContext<APEContext>(options =>
                 options.UseSqlServer("Server=GLC-G15\\SQLEXPRESS;Database=APE;Trusted_Connection=True;TrustServerCertificate=True;"));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IProtocol, Protocol>();
 
             // Register your view models, etc.
             services.AddTransient<MainWindow>();
