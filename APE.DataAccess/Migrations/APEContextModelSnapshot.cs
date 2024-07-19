@@ -22,7 +22,55 @@ namespace APE.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("APE.Core.Implementation.User", b =>
+            modelBuilder.Entity("APE.DataAccess.Entities.ProtocolEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MongoDbStepsId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Version")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("Protocols");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AuthorId = 1,
+                            DateCreatedOn = new DateTime(2024, 7, 18, 20, 18, 31, 984, DateTimeKind.Local).AddTicks(6845),
+                            Description = "Protocol for testing system integration.",
+                            MongoDbStepsId = "n3jnj3n899k",
+                            Name = "Integration Protocol",
+                            Version = "1.0.0"
+                        });
+                });
+
+            modelBuilder.Entity("APE.DataAccess.Entities.UserEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,6 +106,7 @@ namespace APE.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
@@ -72,7 +121,7 @@ namespace APE.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreatedOn = new DateTime(2024, 7, 18, 13, 45, 59, 698, DateTimeKind.Local).AddTicks(2826),
+                            DateCreatedOn = new DateTime(2024, 7, 18, 20, 18, 31, 984, DateTimeKind.Local).AddTicks(5894),
                             DateLastLoginOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateUpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "gabriel_lopez-candales@bio-rad.com",
@@ -83,6 +132,17 @@ namespace APE.DataAccess.Migrations
                             Phone = "(523)455-9789",
                             Username = "glc-biorad"
                         });
+                });
+
+            modelBuilder.Entity("APE.DataAccess.Entities.ProtocolEntity", b =>
+                {
+                    b.HasOne("APE.DataAccess.Entities.UserEntity", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Author");
                 });
 #pragma warning restore 612, 618
         }
