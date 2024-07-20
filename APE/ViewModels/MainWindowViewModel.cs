@@ -1,5 +1,6 @@
 ﻿using APE.Commands;
 using APE.ViewModels.Shared;
+using APE.Views.AddStepWindow;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -25,6 +26,7 @@ namespace APE.ViewModels
         private ICommand playCommand;
         private ICommand pauseCommand;
         private ICommand stopCommand;
+        private ICommand addStepCommand;
         private Brush statusBarBackground;
         private Brush statusBarForeground;
 
@@ -128,6 +130,28 @@ namespace APE.ViewModels
         public bool CanExecuteStopCommand(object parameter)
         {
             // Logic for if the stop command can be execute
+            return true;
+        }
+        public ICommand AddStepCommand
+        {
+            get
+            {
+                if (addStepCommand == null)
+                {
+                    addStepCommand = new RelayCommand(ExecuteAddStepCommand, CanExecuteAddStepCommand);
+                }
+                return addStepCommand;
+            }
+        }
+        public void ExecuteAddStepCommand(object parameter)
+        {
+            // If protocol is not currently running (add ability to create a new protocol while one is running)
+            APE.Views.AddStepWindow.AddStepWindow addStepWindow = new Views.AddStepWindow.AddStepWindow();
+            addStepWindow.Show();
+        }
+        public bool CanExecuteAddStepCommand(object parameter)
+        {
+            // Logic for if the add step command can be executed
             return true;
         }
 

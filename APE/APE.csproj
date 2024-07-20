@@ -11,12 +11,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="HowTo\**" />
+    <Compile Remove="Views\MainWindow\**" />
     <EmbeddedResource Remove="HowTo\**" />
+    <EmbeddedResource Remove="Views\MainWindow\**" />
     <None Remove="HowTo\**" />
+    <None Remove="Views\MainWindow\**" />
     <Page Remove="HowTo\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\MainWindow\" />
+    <Page Remove="Views\MainWindow\**" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\protocol-editor-icon.png" />
