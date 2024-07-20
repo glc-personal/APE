@@ -1,0 +1,73 @@
+﻿<Window x:Class="APE.Views.AddStepWindow.AddStepWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:APE.Views.AddStepWindow"
+        xmlns:shared="clr-namespace:APE.Views.Shared"
+        mc:Ignorable="d"
+        Title="Add Step" Height="720" Width="400"
+        MaxHeight="720" MaxWidth="400"
+        MinHeight="720" MinWidth="400">
+    <StackPanel Orientation="Vertical">
+        <!-- Add Step Banner -->
+        <shared:Banner DataContext="{Binding MyBannerViewModel}"/>
+
+        <!-- Liquid Handling Steps -->
+        <shared:Descriptor DataContext="{Binding MyLiquidHandlingStepsDescriptorViewModel}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Add Sample" Style="{StaticResource AddStepWindowLeftButtonStyle}"/>
+            <Button Content="Add Reagent" Style="{StaticResource AddStepWindowRightButtonStyle}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Transfer Solution" Style="{StaticResource AddStepWindowLeftButtonStyle}"/>
+            <Button Content="Mix Solution" Style="{StaticResource AddStepWindowRightButtonStyle}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Aspirate" Style="{StaticResource AddStepWindowLeftButtonStyle}"/>
+            <Button Content="Dispense" Style="{StaticResource AddStepWindowRightButtonStyle}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Generate Droplets" Style="{StaticResource AddStepWindowButtonStyle}"/>
+        </StackPanel>
+
+        <!-- Duration Steps -->
+        <shared:Descriptor DataContext="{Binding MyDurationStepsDescriptorViewModel}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Lyse Sample" Style="{StaticResource AddStepWindowLeftButtonStyle}"/>
+            <Button Content="Bind Sample" Style="{StaticResource AddStepWindowRightButtonStyle}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Heat Deep Well Plate" Style="{StaticResource AddStepWindowLeftButtonStyle}"/>
+            <Button Content="Shake Deep Well Plate" Style="{StaticResource AddStepWindowRightButtonStyle}"/>
+        </StackPanel>
+
+        <!-- Gantry Steps -->
+        <shared:Descriptor DataContext="{Binding MyGantryStepsDescriptorViewModel}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Move Pipettor" Style="{StaticResource AddStepWindowLeftButtonStyle}"/>
+            <Button Content="Move Imager" Style="{StaticResource AddStepWindowRightButtonStyle}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Pickup Tips" Style="{StaticResource AddStepWindowLeftButtonStyle}"/>
+            <Button Content="Eject Tips" Style="{StaticResource AddStepWindowRightButtonStyle}"/>
+        </StackPanel>
+
+        <!-- Gantry Steps -->
+        <shared:Descriptor DataContext="{Binding MyReaderStepsDescriptorViewModel}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Open Tray" Style="{StaticResource AddStepWindowLeftButtonStyle}"/>
+            <Button Content="Close Tray" Style="{StaticResource AddStepWindowRightButtonStyle}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Lower Heater" Style="{StaticResource AddStepWindowLeftButtonStyle}"/>
+            <Button Content="Raise Heater" Style="{StaticResource AddStepWindowRightButtonStyle}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Start dPCR" Style="{StaticResource AddStepWindowLeftButtonStyle}"/>
+            <Button Content="Image" Style="{StaticResource AddStepWindowRightButtonStyle}"/>
+        </StackPanel>
+
+    </StackPanel>
+
+</Window>
