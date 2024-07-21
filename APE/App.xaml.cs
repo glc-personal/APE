@@ -8,6 +8,7 @@ using APE.DataAccess.Interfaces;
 using APE.DataAccess.Repositories;
 using APE.Core.Interfaces;
 using APE.Core.Implementation;
+using Prism.Events;
 
 namespace APE
 {
@@ -29,6 +30,9 @@ namespace APE
                 options.UseSqlServer("Server=GLC-G15\\SQLEXPRESS;Database=APE;Trusted_Connection=True;TrustServerCertificate=True;"));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProtocol, Protocol>();
+
+            // Register the event aggregator
+            services.AddSingleton<IEventAggregator, EventAggregator>();
 
             // Register your view models, etc.
             services.AddTransient<MainWindow>();

@@ -8,11 +8,16 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using Prism.Events;
+using Prism.Commands;
+using APE.UIEvents;
 
 namespace APE.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
+        private readonly IEventAggregator _eventAggregator;
+
         /*
          * ----------------------------------------------------------------------------------------------------------------
          * Private Attributes
@@ -166,20 +171,14 @@ namespace APE.ViewModels
             {
                 if (toggleAddStepPanelCommand == null)
                 {
-                    toggleAddStepPanelCommand = new RelayCommand(ExecuteToggleAddStepPanelCommand,
-                        CanExecuteToggleAddStepPanelCommand);
+                    toggleAddStepPanelCommand = new DelegateCommand(ExecuteToggleAddStepPanelCommand);
                 }
                 return toggleAddStepPanelCommand;
             }
         }
-        private void ExecuteToggleAddStepPanelCommand(object parameter)
+        private void ExecuteToggleAddStepPanelCommand()
         {
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow?.ToggleAddStepPanel();
-        }
-        private bool CanExecuteToggleAddStepPanelCommand(object paramater)
-        {
-            return true;
+            _eventAggregator.GetEvent<ToggleAddStepPanelEvent>().Publish();
         }
 
         /*
@@ -187,12 +186,15 @@ namespace APE.ViewModels
          * Constructor
          * ----------------------------------------------------------------------------------------------------------------
          */
-        public MainWindowViewModel()
+        public MainWindowViewModel(IEventAggregator eventAggregator)
         {
+            // Setup the event aggregator
+            _eventAggregator = eventAggregator;
+
             // Setup the timer
             timer = new Timer(1000); // Update every 1 second
             timer.Elapsed += TimerElapsed;
-            timer.Start();            
+            timer.Start();
         }
 
         /*
