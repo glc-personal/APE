@@ -2,7 +2,5 @@
 
 namespace APE.UIEvents
 {
-    class ToggleAddStepPanelEvent : PubSubEvent
-    {
-    }
+    class ToggleAddStepPanelEvent : PubSubEvent { }
 }
