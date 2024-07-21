@@ -113,57 +113,58 @@
             <!-- Grid Column Definitions -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*" x:Name="MainWindowMainContent"/>
-                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="0.3*"/>
                 <ColumnDefinition Width="0" x:Name="MainWindowAddStepPanel"/>
             </Grid.ColumnDefinitions>
-            <!-- Grid Row Definitions -->
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="8*"/>
-                <RowDefinition Height="1.5*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
 
-            <!-- Banner -->
-            <shared:Banner Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" DataContext="{Binding MyBannerViewModel}" />
-            
-            <!-- Add Step Toggle -->
-            <shared:IconButton Grid.Row="0" Grid.Column="1" 
-                               VerticalAlignment="Center" HorizontalAlignment="Center"
-                               DataContext="{Binding MyAddIconButtonViewModel}"/>
+            <StackPanel Orientation="Vertical">
+                <!-- Banner -->
+                <shared:Banner Grid.Column="0" DataContext="{Binding MyBannerViewModel}" />
 
-            <!-- Info Stamps -->
-            <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <shared:InfoStamp DataContext="{Binding MyProtocolInfoStampViewModel}" Margin="0 0 50 0"/>
-                <shared:InfoStamp DataContext="{Binding MyShortDescriptionInfoStampViewModel}" Margin="0 0 50 0"/>
-                <shared:InfoStamp DataContext="{Binding MyAuthorInfoStampViewModel}" Margin="0 0 50 0"/>
-                <shared:InfoStamp DataContext="{Binding MyStatusInfoStampViewModel}" Margin="0 0 50 0"/>
-                <shared:InfoStamp DataContext="{Binding MyCoordinatesInfoStampViewModel}" Margin="0 0 50 0"/>
-                <shared:InfoStamp DataContext="{Binding MyReagentsInfoStampViewModel}" Margin="0 0 50 0"/>
-                <shared:InfoStamp DataContext="{Binding MyTipBoxMappingInfoStampViewModel}" Margin="0 0 50 0"/>
-                <shared:InfoStamp DataContext="{Binding MyVersionInfoStampViewModel}" Margin="0 0 50 0"/>
-            </WrapPanel>
-            
-            <!-- Protocol Progress Bar -->
-            <shared:DiscreteProgressBar Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                                        DataContext="{Binding MyDiscreteProgressBarViewModel}"/>
+                <!-- Info Stamps -->
+                <WrapPanel Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <shared:InfoStamp DataContext="{Binding MyProtocolInfoStampViewModel}" Margin="0 0 50 0"/>
+                    <shared:InfoStamp DataContext="{Binding MyShortDescriptionInfoStampViewModel}" Margin="0 0 50 0"/>
+                    <shared:InfoStamp DataContext="{Binding MyAuthorInfoStampViewModel}" Margin="0 0 50 0"/>
+                    <shared:InfoStamp DataContext="{Binding MyStatusInfoStampViewModel}" Margin="0 0 50 0"/>
+                    <shared:InfoStamp DataContext="{Binding MyCoordinatesInfoStampViewModel}" Margin="0 0 50 0"/>
+                    <shared:InfoStamp DataContext="{Binding MyReagentsInfoStampViewModel}" Margin="0 0 50 0"/>
+                    <shared:InfoStamp DataContext="{Binding MyTipBoxMappingInfoStampViewModel}" Margin="0 0 50 0"/>
+                    <shared:InfoStamp DataContext="{Binding MyVersionInfoStampViewModel}" Margin="0 0 50 0"/>
+                </WrapPanel>
 
-            <!-- Protocol Descriptor -->
-            <shared:Descriptor Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" 
-                               DataContext="{Binding MyProtocolDescriptorViewModel}"/>
-            
-            <!-- Editor -->
-            <shared:ProtocolEditor Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
-            
-            <!-- Action Buttons -->
-            <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
-                <Button Content="Add Step" Command="{Binding AddStepCommand}" Style="{StaticResource MainWindowAddStepButtonStyle}"/>
-                <Button Content="Remove Selection" Style="{StaticResource MainWindowRemoveSelectionButtonStyle}"/>
-                <Button Content="Follow" Style="{StaticResource MainWindowFollowButtonStyle}"/>
+                <!-- Protocol Progress Bar -->
+                <shared:DiscreteProgressBar Grid.Column="0" Grid.ColumnSpan="2"
+                            DataContext="{Binding MyDiscreteProgressBarViewModel}"/>
+
+                <!-- Protocol Descriptor -->
+                <shared:Descriptor Grid.Column="0" Grid.ColumnSpan="2" 
+                   DataContext="{Binding MyProtocolDescriptorViewModel}"/>
+
+                <!-- Editor -->
+                <shared:ProtocolEditor Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                <!-- Action Buttons -->
+                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Button Content="Add Step" Command="{Binding AddStepCommand}" Style="{StaticResource MainWindowAddStepButtonStyle}"/>
+                    <Button Content="Remove Selection" Style="{StaticResource MainWindowRemoveSelectionButtonStyle}"/>
+                    <Button Content="Follow" Style="{StaticResource MainWindowFollowButtonStyle}"/>
+                </StackPanel>
             </StackPanel>
-            
+
+            <Border Grid.Column="1" Style="{StaticResource MainWindowMiddleColumnStyle}">
+                <Grid>
+                    <!-- Row Defintions -->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+                    <!-- Add Step Toggle -->
+                    <shared:IconButton Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" 
+                                       DataContext="{Binding MyAddIconButtonViewModel}"/>
+                </Grid>
+            </Border>
+
             <!-- Add Step Panel -->
             <asp:AddStepPanel Grid.Row="0" Grid.Column="2" 
                               DataContext="{Binding MyAddStepPanelViewModel}"/>
