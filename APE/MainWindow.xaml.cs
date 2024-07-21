@@ -2,8 +2,10 @@
 using System.Windows;
 using System.Collections.ObjectModel;
 using APE.ViewModels.Shared;
+using Prism.Events;
 using System.Windows.Media;
 using System;
+using APE.UIEvents;
 
 namespace APE
 {
@@ -13,12 +15,18 @@ namespace APE
     public partial class MainWindow : Window
     {
         public MainWindowViewModel ViewModel { get; set; }
-        public MainWindow()
+        private readonly IEventAggregator _eventAggregator;
+
+        public MainWindow(IEventAggregator eventAggregator)
         {
             InitializeComponent();
 
+            // Setup the event aggregator
+            _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<ToggleAddStepPanelEvent>().Subscribe(OnToggleAddStepPanel);
+
             // Setup the view model
-            ViewModel = new MainWindowViewModel();
+            ViewModel = new MainWindowViewModel(_eventAggregator);
             ViewModel.MyBannerViewModel = new BannerViewModel
             {
                 Title = "Protocol Editor",
@@ -115,21 +123,49 @@ namespace APE
             ViewModel.CurrentDate = DateTime.Now.ToString("M/d/yyyy");
             ViewModel.StatusBarBackground = Brushes.LightGray;
             ViewModel.StatusBarForeground = Brushes.Black;
-            ViewModel.MyAddStepPanelViewModel = new AddStepPanelViewModel();
+            ViewModel.MyAddStepPanelViewModel = new AddStepPanelViewModel
+            {
+                MyBannerViewModel = new BannerViewModel
+                {
+                    Title = "Add Step",
+                    Description = "Add specific protocol steps to your protocol.",
+                    IconPath = "pack://application:,,,/Resources/add-step-icon.png"
+                },
+                MyLiquidHandlingStepsDescriptorViewModel = new DescriptorViewModel
+                {
+                    Title = "Liquid Handling Steps",
+                    Description = "Steps relating to liquid handling actions."
+                },
+                MyDurationStepsDescriptorViewModel = new DescriptorViewModel
+                {
+                    Title = "Duration Steps",
+                    Description = "Steps relating to duration actions."
+                },
+                MyGantryStepsDescriptorViewModel = new DescriptorViewModel
+                {
+                    Title = "Gantry Step",
+                    Description = "Steps relating to gantry actions."
+                },
+                MyReaderStepsDescriptorViewModel = new DescriptorViewModel
+                {
+                    Title = "Reader Steps",
+                    Description = "Steps relating to reader actions."
+                }
+            };
 
             // Set the DataContext
             DataContext = ViewModel;
         }
 
         /// <summary>
-        /// Toggle the Add Step Panel 
+        /// Triggers on toggling the Add Step Panel 
         /// </summary>
-        public void ToggleAddStepPanel()
+        private void OnToggleAddStepPanel()
         {
             if (MainWindowAddStepPanel.Width.Value == 0)
             {
-                MainWindowAddStepPanel.Width = new GridLength(3, GridUnitType.Star);
-                MainWindowMainContent.Width = new GridLength(7, GridUnitType.Star);
+                MainWindowAddStepPanel.Width = new GridLength(4, GridUnitType.Star);
+                MainWindowMainContent.Width = new GridLength(6, GridUnitType.Star);
             }
             else
             {

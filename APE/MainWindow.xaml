@@ -165,7 +165,8 @@
             </StackPanel>
             
             <!-- Add Step Panel -->
-            <asp:AddStepPanel Grid.Column="2" DataContext="{Binding MyAddStepPanelViewModel}"/>
+            <asp:AddStepPanel Grid.Row="0" Grid.Column="2" 
+                              DataContext="{Binding MyAddStepPanelViewModel}"/>
 
         </Grid>
 
