@@ -20,6 +20,21 @@
     <Page Remove="Views\MainWindow\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Resources\add-icon.png" />
+    <None Remove="Resources\copy-icon.png" />
+    <None Remove="Resources\cut-icon.png" />
+    <None Remove="Resources\left-arrow-icon.png" />
+    <None Remove="Resources\paste-icon.png" />
+    <None Remove="Resources\right-arrow-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\left-arrow-icon.png" />
+    <Resource Include="Resources\paste-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\add-icon.png" />
+    <Resource Include="Resources\copy-icon.png" />
+    <Resource Include="Resources\cut-icon.png" />
     <Resource Include="Resources\protocol-editor-icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -33,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\play-icon.png" />
+    <Resource Include="Resources\right-arrow-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\stop-icon.png" />

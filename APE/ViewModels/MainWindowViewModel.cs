@@ -27,6 +27,7 @@ namespace APE.ViewModels
         private ICommand pauseCommand;
         private ICommand stopCommand;
         private ICommand addStepCommand;
+        private ICommand toggleAddStepPanelCommand;
         private Brush statusBarBackground;
         private Brush statusBarForeground;
 
@@ -36,6 +37,10 @@ namespace APE.ViewModels
          * --------------------------------------------------------------------------------------------------------
          */
         public BannerViewModel MyBannerViewModel { get; set; }
+        public IconButtonViewModel MyAddIconButtonViewModel { get; set; }
+        public IconButtonViewModel MyCopyIconButtonViewModel { get; set; }
+        public IconButtonViewModel MyCutIconButtonViewModel { get; set; }
+        public IconButtonViewModel MyPasteIconButtonViewModel { get; set; }
         public InfoStampViewModel MyProtocolInfoStampViewModel { get; set; }
         public InfoStampViewModel MyShortDescriptionInfoStampViewModel { get; set; }
         public InfoStampViewModel MyAuthorInfoStampViewModel { get; set; }
@@ -46,6 +51,7 @@ namespace APE.ViewModels
         public InfoStampViewModel MyVersionInfoStampViewModel { get; set; }
         public DiscreteProgressBarViewModel MyDiscreteProgressBarViewModel { get; set; }
         public DescriptorViewModel MyProtocolDescriptorViewModel { get; set; }
+        public AddStepPanelViewModel MyAddStepPanelViewModel { get; set; }
 
         /*
          * ----------------------------------------------------------------------------------------------------------------
@@ -152,6 +158,27 @@ namespace APE.ViewModels
         public bool CanExecuteAddStepCommand(object parameter)
         {
             // Logic for if the add step command can be executed
+            return true;
+        }
+        public ICommand ToggleAddStepPanelCommand
+        {
+            get
+            {
+                if (toggleAddStepPanelCommand == null)
+                {
+                    toggleAddStepPanelCommand = new RelayCommand(ExecuteToggleAddStepPanelCommand,
+                        CanExecuteToggleAddStepPanelCommand);
+                }
+                return toggleAddStepPanelCommand;
+            }
+        }
+        private void ExecuteToggleAddStepPanelCommand(object parameter)
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow?.ToggleAddStepPanel();
+        }
+        private bool CanExecuteToggleAddStepPanelCommand(object paramater)
+        {
             return true;
         }
 

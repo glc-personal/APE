@@ -11,6 +11,10 @@ namespace APE.ViewModels.Shared
          * --------------------------------------------------------------------------------------------------------
          */
         private string iconPath { get; set; }
+        private string buttonWidth { get; set; }
+        private string buttonHeight { get; set; }
+        private string iconWidth { get; set; }
+        private string iconHeight { get; set; }
         private ICommand command { get; set; }
 
         /*
@@ -25,6 +29,42 @@ namespace APE.ViewModels.Shared
             {
                 iconPath = value;
                 OnPropertyChanged(nameof(IconPath));
+            }
+        }
+        public string ButtonWidth
+        {
+            get => buttonWidth;
+            set
+            {
+                buttonWidth = value;
+                OnPropertyChanged(nameof(ButtonWidth));
+            }
+        }
+        public string ButtonHeight
+        {
+            get => buttonHeight;
+            set
+            {
+                buttonHeight = value;
+                OnPropertyChanged(nameof(ButtonHeight)); 
+            }
+        }
+        public string IconWidth
+        {
+            get => iconWidth;
+            set
+            {
+                iconWidth = value;
+                OnPropertyChanged(nameof(IconWidth));
+            }
+        }
+        public string IconHeight
+        {
+            get => iconHeight;
+            set
+            {
+                iconHeight = value;
+                OnPropertyChanged(nameof(IconHeight));
             }
         }
         public ICommand Command

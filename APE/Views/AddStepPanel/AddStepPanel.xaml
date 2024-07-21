@@ -1,15 +1,12 @@
-﻿<Window x:Class="APE.Views.AddStepWindow.AddStepWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:APE.Views.AddStepWindow"
-        xmlns:shared="clr-namespace:APE.Views.Shared"
-        mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
-        Title="Add Step" Height="720" Width="400"
-        MaxHeight="720" MaxWidth="400"
-        MinHeight="720" MinWidth="400">
+﻿<UserControl x:Class="APE.Views.AddStepPanel.AddStepPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:APE.Views.AddStepPanel"
+             xmlns:shared="clr-namespace:APE.Views.Shared"
+             mc:Ignorable="d" 
+             Height="650" Width="400">
     <StackPanel Orientation="Vertical">
         <!-- Add Step Banner -->
         <shared:Banner DataContext="{Binding MyBannerViewModel}"/>
@@ -72,4 +69,4 @@
 
     </StackPanel>
 
-</Window>
+</UserControl>
