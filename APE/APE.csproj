@@ -11,12 +11,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="HowTo\**" />
+    <Compile Remove="Shared\**" />
     <Compile Remove="Views\MainWindow\**" />
     <EmbeddedResource Remove="HowTo\**" />
+    <EmbeddedResource Remove="Shared\**" />
     <EmbeddedResource Remove="Views\MainWindow\**" />
     <None Remove="HowTo\**" />
+    <None Remove="Shared\**" />
     <None Remove="Views\MainWindow\**" />
     <Page Remove="HowTo\**" />
+    <Page Remove="Shared\**" />
     <Page Remove="Views\MainWindow\**" />
   </ItemGroup>
   <ItemGroup>
