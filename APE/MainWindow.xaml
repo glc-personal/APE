@@ -8,7 +8,7 @@
         xmlns:shared="clr-namespace:APE.Views.Shared"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Assay Protocol Editor" Height="650" Width="1000">
+        Title="Assay Protocol Editor" Height="650" Width="1200">
     <!--<WindowState="Maximized">-->
     <DockPanel>
         <!--Main Menu-->
@@ -146,7 +146,6 @@
 
                 <!-- Action Buttons -->
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2">
-                    <Button Content="Add Step" Command="{Binding AddStepCommand}" Style="{StaticResource MainWindowAddStepButtonStyle}"/>
                     <Button Content="Remove Selection" Style="{StaticResource MainWindowRemoveSelectionButtonStyle}"/>
                     <Button Content="Follow" Style="{StaticResource MainWindowFollowButtonStyle}"/>
                 </StackPanel>
@@ -166,8 +165,10 @@
             </Border>
 
             <!-- Add Step Panel -->
-            <asp:AddStepPanel Grid.Row="0" Grid.Column="2" 
-                              DataContext="{Binding MyAddStepPanelViewModel}"/>
+            <ScrollViewer Grid.Row="0" Grid.Column="2">
+                <asp:AddStepPanel 
+                  DataContext="{Binding MyAddStepPanelViewModel}"/>
+            </ScrollViewer>
 
         </Grid>
 
