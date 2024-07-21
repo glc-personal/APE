@@ -164,14 +164,12 @@ namespace APE
         {
             if (MainWindowAddStepPanel.Width.Value == 0)
             {
-                MainWindowAddStepPanel.Width = new GridLength(4, GridUnitType.Star);
-                MainWindowMainContent.Width = new GridLength(6, GridUnitType.Star);
+                MainWindowAddStepPanel.Width = new GridLength(400);
                 ViewModel.MyAddIconButtonViewModel.IconPath = "pack://application:,,,/Resources/right-arrow-icon.png";
             }
             else
             {
                 MainWindowAddStepPanel.Width = new GridLength(0, GridUnitType.Star);
-                MainWindowMainContent.Width = new GridLength(10, GridUnitType.Star);
                 ViewModel.MyAddIconButtonViewModel.IconPath = "pack://application:,,,/Resources/left-arrow-icon.png";
             }
         }

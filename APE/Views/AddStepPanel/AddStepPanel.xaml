@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:APE.Views.AddStepPanel"
              xmlns:shared="clr-namespace:APE.Views.Shared"
              mc:Ignorable="d" 
-             Height="650" Width="400">
+             Height="Auto" Width="400">
     <StackPanel Orientation="Vertical">
         <!-- Add Step Banner -->
         <shared:Banner DataContext="{Binding MyBannerViewModel}"/>

@@ -6,7 +6,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/APE;component/Styles/MainWindowStyles.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/APE;component/Styles/AddStepWindowStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/APE;component/Styles/AddStepPanelStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
