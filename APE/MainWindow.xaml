@@ -113,8 +113,8 @@
             <!-- Grid Column Definitions -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*" x:Name="MainWindowMainContent"/>
-                <ColumnDefinition Width="0.3*"/>
-                <ColumnDefinition Width="0" x:Name="MainWindowAddStepPanel"/>
+                <ColumnDefinition Width="25"/>
+                <ColumnDefinition Width="0*" x:Name="MainWindowAddStepPanel"/>
             </Grid.ColumnDefinitions>
 
             <StackPanel Orientation="Vertical">
