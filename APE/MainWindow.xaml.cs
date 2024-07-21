@@ -23,7 +23,6 @@ namespace APE
 
             // Setup the event aggregator
             _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<ToggleAddStepPanelEvent>().Subscribe(OnToggleAddStepPanel);
 
             // Setup the view model
             ViewModel = new MainWindowViewModel(_eventAggregator);
@@ -123,7 +122,7 @@ namespace APE
             ViewModel.CurrentDate = DateTime.Now.ToString("M/d/yyyy");
             ViewModel.StatusBarBackground = Brushes.LightGray;
             ViewModel.StatusBarForeground = Brushes.Black;
-            ViewModel.MyAddStepPanelViewModel = new AddStepPanelViewModel
+            ViewModel.MyAddStepPanelViewModel = new AddStepPanelViewModel(_eventAggregator)
             {
                 MyBannerViewModel = new BannerViewModel
                 {
@@ -155,6 +154,15 @@ namespace APE
 
             // Set the DataContext
             DataContext = ViewModel;
+
+            // Subscribe to events.
+            Subscribe();
+        }
+
+        private void Subscribe()
+        {
+            _eventAggregator.GetEvent<ToggleAddStepPanelEvent>().Subscribe(OnToggleAddStepPanel);
+            _eventAggregator.GetEvent<ToggleAddSampleStepContentEvent>().Subscribe(OnToggleAddSampleStepContent);
         }
 
         /// <summary>
@@ -164,15 +172,25 @@ namespace APE
         {
             if (MainWindowAddStepPanel.Width.Value == 0)
             {
-                MainWindowAddStepPanel.Width = new GridLength(4, GridUnitType.Star);
-                MainWindowMainContent.Width = new GridLength(6, GridUnitType.Star);
+                MainWindowAddStepPanel.Width = new GridLength(400);
                 ViewModel.MyAddIconButtonViewModel.IconPath = "pack://application:,,,/Resources/right-arrow-icon.png";
             }
             else
             {
                 MainWindowAddStepPanel.Width = new GridLength(0, GridUnitType.Star);
-                MainWindowMainContent.Width = new GridLength(10, GridUnitType.Star);
                 ViewModel.MyAddIconButtonViewModel.IconPath = "pack://application:,,,/Resources/left-arrow-icon.png";
+            }
+        }
+
+        private void OnToggleAddSampleStepContent()
+        {
+            if (StepContent.Height.Value == 0)
+            {
+                StepContent.Height = new GridLength(200);
+            }
+            else
+            {
+                StepContent.Height = new GridLength(0, GridUnitType.Star);
             }
         }
     }

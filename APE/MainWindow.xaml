@@ -8,7 +8,8 @@
         xmlns:shared="clr-namespace:APE.Views.Shared"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Assay Protocol Editor" Height="650" Width="1200">
+        WindowState="Maximized"
+        Title="Assay Protocol Editor" MinHeight="550" MinWidth="1000">
     <!--<WindowState="Maximized">-->
     <DockPanel>
         <!--Main Menu-->
@@ -112,7 +113,7 @@
         <Grid DockPanel.Dock="Top">
             <!-- Grid Column Definitions -->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10*" x:Name="MainWindowMainContent"/>
+                <ColumnDefinition Width="1*" x:Name="MainWindowMainContent"/>
                 <ColumnDefinition Width="25"/>
                 <ColumnDefinition Width="0*" x:Name="MainWindowAddStepPanel"/>
             </Grid.ColumnDefinitions>
@@ -165,10 +166,17 @@
             </Border>
 
             <!-- Add Step Panel -->
-            <ScrollViewer Grid.Row="0" Grid.Column="2">
-                <asp:AddStepPanel 
-                  DataContext="{Binding MyAddStepPanelViewModel}"/>
-            </ScrollViewer>
+            <Grid Grid.Row="0" Grid.Column="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" x:Name="AddStepPanelContent"/>
+                        <RowDefinition Height="0*" x:Name="StepContent"/>
+                    </Grid.RowDefinitions>
+                    <ScrollViewer Grid.Row="0">
+                        <asp:AddStepPanel DataContext="{Binding MyAddStepPanelViewModel}"/>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
 
         </Grid>
 

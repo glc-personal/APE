@@ -3,11 +3,14 @@ using APE.ViewModels.Shared;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using Prism.Events;
+using APE.UIEvents;
 
 namespace APE.ViewModels
 {
     public class AddStepPanelViewModel : INotifyPropertyChanged
     {
+        private readonly IEventAggregator _eventAggregator;
         /*
          * ------------------------------------------------------------------------------------------------------
          * Private Attributes
@@ -44,13 +47,22 @@ namespace APE.ViewModels
         }
         private void ExecuteAddSampleCommand(object parameter)
         {
-            MessageBox.Show("Add Sample");
+            _eventAggregator.GetEvent<ToggleAddSampleStepContentEvent>().Publish();
         }
         private bool CanExecuteAddSampleCommand(object parameter)
         {
             return true;
         }
 
+        /*
+         * --------------------------------------------------------------------------------------------------------
+         * Constructor
+         * --------------------------------------------------------------------------------------------------------
+         */
+        public AddStepPanelViewModel(IEventAggregator eventAggregator)
+        {
+            _eventAggregator = eventAggregator;
+        }
 
         /*
          * ------------------------------------------------------------------------------------------------------
