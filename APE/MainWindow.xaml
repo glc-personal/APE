@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APE"
+        xmlns:asp="clr-namespace:APE.Views.AddStepPanel"
         xmlns:shared="clr-namespace:APE.Views.Shared"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="Assay Protocol Editor" Height="650" Width="1000">
     <!--<WindowState="Maximized">-->
     <DockPanel>
@@ -108,6 +110,12 @@
 
         <!-- Content -->
         <Grid DockPanel.Dock="Top">
+            <!-- Grid Column Definitions -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*" x:Name="MainWindowMainContent"/>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="0" x:Name="MainWindowAddStepPanel"/>
+            </Grid.ColumnDefinitions>
             <!-- Grid Row Definitions -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -119,10 +127,15 @@
             </Grid.RowDefinitions>
 
             <!-- Banner -->
-            <shared:Banner Grid.Row="0" DataContext="{Binding MyBannerViewModel}" />
+            <shared:Banner Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" DataContext="{Binding MyBannerViewModel}" />
             
+            <!-- Add Step Toggle -->
+            <shared:IconButton Grid.Row="0" Grid.Column="1" 
+                               VerticalAlignment="Center" HorizontalAlignment="Center"
+                               DataContext="{Binding MyAddIconButtonViewModel}"/>
+
             <!-- Info Stamps -->
-            <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                 <shared:InfoStamp DataContext="{Binding MyProtocolInfoStampViewModel}" Margin="0 0 50 0"/>
                 <shared:InfoStamp DataContext="{Binding MyShortDescriptionInfoStampViewModel}" Margin="0 0 50 0"/>
                 <shared:InfoStamp DataContext="{Binding MyAuthorInfoStampViewModel}" Margin="0 0 50 0"/>
@@ -134,20 +147,25 @@
             </WrapPanel>
             
             <!-- Protocol Progress Bar -->
-            <shared:DiscreteProgressBar Grid.Row="2" DataContext="{Binding MyDiscreteProgressBarViewModel}"/>
+            <shared:DiscreteProgressBar Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                        DataContext="{Binding MyDiscreteProgressBarViewModel}"/>
 
             <!-- Protocol Descriptor -->
-            <shared:Descriptor Grid.Row="3" DataContext="{Binding MyProtocolDescriptorViewModel}"/>
+            <shared:Descriptor Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" 
+                               DataContext="{Binding MyProtocolDescriptorViewModel}"/>
             
             <!-- Editor -->
-            <shared:ProtocolEditor Grid.Row="4"/>
+            <shared:ProtocolEditor Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
             
             <!-- Action Buttons -->
-            <StackPanel Orientation="Horizontal" Grid.Row="5">
+            <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
                 <Button Content="Add Step" Command="{Binding AddStepCommand}" Style="{StaticResource MainWindowAddStepButtonStyle}"/>
                 <Button Content="Remove Selection" Style="{StaticResource MainWindowRemoveSelectionButtonStyle}"/>
                 <Button Content="Follow" Style="{StaticResource MainWindowFollowButtonStyle}"/>
             </StackPanel>
+            
+            <!-- Add Step Panel -->
+            <asp:AddStepPanel Grid.Column="2" DataContext="{Binding MyAddStepPanelViewModel}"/>
 
         </Grid>
 

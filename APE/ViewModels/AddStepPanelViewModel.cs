@@ -4,9 +4,9 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
-namespace APE.ViewModels.AddStepWindow
+namespace APE.ViewModels
 {
-    public class AddStepWindowViewModel : INotifyPropertyChanged
+    public class AddStepPanelViewModel : INotifyPropertyChanged
     {
         /*
          * ------------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ namespace APE.ViewModels.AddStepWindow
         {
             return true;
         }
-        
+
 
         /*
          * ------------------------------------------------------------------------------------------------------
@@ -63,4 +63,5 @@ namespace APE.ViewModels.AddStepWindow
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+
 }

@@ -25,6 +25,15 @@ namespace APE
                 Description = "Create, edit, and run protocols for assay development.",
                 IconPath = "pack://application:,,,/Resources/protocol-editor-icon.png"
             };
+            ViewModel.MyAddIconButtonViewModel = new IconButtonViewModel
+            {
+                IconPath = "pack://application:,,,/Resources/left-arrow-icon.png",
+                Command = ViewModel.ToggleAddStepPanelCommand,
+                ButtonWidth = "20",
+                ButtonHeight = "20",
+                IconWidth = "10",
+                IconHeight = "10"
+            };
             ViewModel.MyProtocolInfoStampViewModel = new InfoStampViewModel
             {
                 Title = "Protocol",
@@ -71,16 +80,28 @@ namespace APE
                 {
                     IconPath = "pack://application:,,,/Resources/play-icon.png",
                     Command = ViewModel.PlayCommand,
+                    ButtonWidth = "50",
+                    ButtonHeight = "50",
+                    IconWidth = "40",
+                    IconHeight = "40"
                 },
                 PauseIconButton = new IconButtonViewModel
                 {
                     IconPath = "pack://application:,,,/Resources/pause-icon.png",
                     Command = ViewModel.PauseCommand,
+                    ButtonWidth = "50",
+                    ButtonHeight = "50",
+                    IconWidth = "40",
+                    IconHeight = "40"
                 },
                 StopIconButton = new IconButtonViewModel
                 {
                     IconPath = "pack://application:,,,/Resources/stop-icon.png",
                     Command = ViewModel.StopCommand,
+                    ButtonWidth = "50",
+                    ButtonHeight = "50",
+                    IconWidth = "40",
+                    IconHeight = "40"
                 },
             };
             ViewModel.MyProtocolDescriptorViewModel = new DescriptorViewModel
@@ -94,9 +115,27 @@ namespace APE
             ViewModel.CurrentDate = DateTime.Now.ToString("M/d/yyyy");
             ViewModel.StatusBarBackground = Brushes.LightGray;
             ViewModel.StatusBarForeground = Brushes.Black;
+            ViewModel.MyAddStepPanelViewModel = new AddStepPanelViewModel();
 
             // Set the DataContext
             DataContext = ViewModel;
+        }
+
+        /// <summary>
+        /// Toggle the Add Step Panel 
+        /// </summary>
+        public void ToggleAddStepPanel()
+        {
+            if (MainWindowAddStepPanel.Width.Value == 0)
+            {
+                MainWindowAddStepPanel.Width = new GridLength(3, GridUnitType.Star);
+                MainWindowMainContent.Width = new GridLength(7, GridUnitType.Star);
+            }
+            else
+            {
+                MainWindowAddStepPanel.Width = new GridLength(0, GridUnitType.Star);
+                MainWindowMainContent.Width = new GridLength(10, GridUnitType.Star);
+            }
         }
     }
 }
