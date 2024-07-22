@@ -1,14 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Windows;
 using APE.ViewModels;
-using APE.DataAccess;
-using APE.DataAccess.Interfaces;
-using APE.DataAccess.Repositories;
-using APE.Core.Interfaces;
-using APE.Core.Implementation;
-using Prism.Events;
+using System.Configuration;
+using APE.ApplicationServices.Interfaces;
+using APE.ApplicationServices.Implementations;
 
 namespace APE
 {
@@ -26,13 +22,9 @@ namespace APE
         private void ConfigureServices(IServiceCollection services)
         {
             // Setup the Database connection, repositories, etc.
-            services.AddDbContext<APEContext>(options =>
-                options.UseSqlServer("Server=GLC-G15\\SQLEXPRESS;Database=APE;Trusted_Connection=True;TrustServerCertificate=True;"));
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IProtocol, Protocol>();
-
-            // Register the event aggregator
-            services.AddSingleton<IEventAggregator, EventAggregator>();
+            var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            IServiceConfiguration serviceConfiguration = new ServiceConfiguration();
+            serviceConfiguration.ConfigureServices(services, connectionString);
 
             // Register your view models, etc.
             services.AddTransient<MainWindow>();

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using System.Configuration;
 
 namespace APE.DataAccess
 {
@@ -7,8 +8,12 @@ namespace APE.DataAccess
     {
         public APEContext CreateDbContext(string[] args)
         {
+             
             var optionsBuilder = new DbContextOptionsBuilder<APEContext>();
-            optionsBuilder.UseSqlServer("Server=GLC-G15\\SQLEXPRESS;Database=APE;Trusted_Connection=True;TrustServerCertificate=True;");
+
+            // Obtain the connection string to the database
+            var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            optionsBuilder.UseSqlServer(connectionString);
 
             return new APEContext(optionsBuilder.Options);
         }
