@@ -186,7 +186,7 @@ namespace APE
         {
             if (StepContent.Height.Value == 0)
             {
-                StepContent.Height = new GridLength(200);
+                StepContent.Height = new GridLength(0.8, GridUnitType.Star);
             }
             else
             {

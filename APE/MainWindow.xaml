@@ -152,12 +152,12 @@
                 </StackPanel>
             </StackPanel>
 
+            <!-- Middle divider column -->
             <Border Grid.Column="1" Style="{StaticResource MainWindowMiddleColumnStyle}">
                 <Grid>
                     <!-- Row Defintions -->
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1.5*"/>
-                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
                     <!-- Add Step Toggle -->
                     <shared:IconButton Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" 
@@ -166,11 +166,11 @@
             </Border>
 
             <!-- Add Step Panel -->
-            <Grid Grid.Row="0" Grid.Column="2">
+            <Grid Grid.Column="2">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" x:Name="AddStepPanelContent"/>
-                        <RowDefinition Height="0*" x:Name="StepContent"/>
+                        <RowDefinition Height="0" x:Name="StepContent"/>
                     </Grid.RowDefinitions>
                     <ScrollViewer Grid.Row="0">
                         <asp:AddStepPanel DataContext="{Binding MyAddStepPanelViewModel}"/>
