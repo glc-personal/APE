@@ -15,6 +15,7 @@ namespace APE.ViewModels
          * ------------------------------------------------------------------------------------------------------
          */
         private ICommand addSampleCommand { get; set; }
+        private ICommand addReagentCommand { get; set; }
 
         /*
          * ------------------------------------------------------------------------------------------------------
@@ -48,6 +49,25 @@ namespace APE.ViewModels
             _eventAggregator.GetEvent<ToggleAddSampleStepContentEvent>().Publish();
         }
         private bool CanExecuteAddSampleCommand(object parameter)
+        {
+            return true;
+        }
+        public ICommand AddReagentCommand
+        {
+            get
+            {
+                if (addReagentCommand == null)
+                {
+                    addReagentCommand = new RelayCommand(ExecuteAddReagentCommand, CanExecuteAddReagentCommand);
+                }
+                return addReagentCommand;
+            }
+        }
+        private void ExecuteAddReagentCommand(object parameter)
+        {
+            _eventAggregator.GetEvent<ToggleAddReagentStepContentEvent>().Publish();
+        }
+        private bool CanExecuteAddReagentCommand(object parameter)
         {
             return true;
         }

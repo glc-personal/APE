@@ -30,6 +30,7 @@ namespace APE.ViewModels
         private ICommand pauseCommand;
         private ICommand stopCommand;
         private ICommand toggleAddStepPanelCommand;
+
         private Brush statusBarBackground;
         private Brush statusBarForeground;
         private object stepContentObject;

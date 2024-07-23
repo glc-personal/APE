@@ -163,6 +163,7 @@ namespace APE
         {
             _eventAggregator.GetEvent<ToggleAddStepPanelEvent>().Subscribe(OnToggleAddStepPanel);
             _eventAggregator.GetEvent<ToggleAddSampleStepContentEvent>().Subscribe(OnToggleAddSampleStepContent);
+            _eventAggregator.GetEvent<ToggleAddReagentStepContentEvent>().Subscribe(OnToggleAddReagentStepContent);
         }
 
         /// <summary>
@@ -211,6 +212,18 @@ namespace APE
                         Volume = 100
                     };
                 }
+            }
+            else
+            {
+                StepContent.Height = new GridLength(0, GridUnitType.Star);
+            }
+        }
+
+        private void OnToggleAddReagentStepContent()
+        {
+            if (StepContent.Height.Value == 0)
+            {
+                StepContent.Height = new GridLength(0.8, GridUnitType.Star);            
             }
             else
             {

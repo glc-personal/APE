@@ -16,7 +16,8 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Add Sample" Command="{Binding AddSampleCommand}" 
                     Style="{StaticResource AddStepWindowLeftButtonStyle}"/>
-            <Button Content="Add Reagent" Style="{StaticResource AddStepWindowRightButtonStyle}"/>
+            <Button Content="Add Reagent" Command="{Binding AddReagentCommand}"
+                    Style="{StaticResource AddStepWindowRightButtonStyle}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Transfer Solution" Style="{StaticResource AddStepWindowLeftButtonStyle}"/>
