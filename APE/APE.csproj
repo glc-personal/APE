@@ -26,6 +26,10 @@
     <None Remove="Resources\left-arrow-icon.png" />
     <None Remove="Resources\paste-icon.png" />
     <None Remove="Resources\right-arrow-icon.png" />
+    <None Remove="Resources\sample-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sample-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\left-arrow-icon.png" />

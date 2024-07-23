@@ -1,14 +1,12 @@
 ﻿using APE.Commands;
 using APE.ViewModels.Shared;
-using System.ComponentModel;
-using System.Windows;
 using System.Windows.Input;
 using Prism.Events;
 using APE.UIEvents;
 
 namespace APE.ViewModels
 {
-    public class AddStepPanelViewModel : INotifyPropertyChanged
+    public class AddStepPanelViewModel : ViewModelBase
     {
         private readonly IEventAggregator _eventAggregator;
         /*
@@ -62,17 +60,6 @@ namespace APE.ViewModels
         public AddStepPanelViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
-        }
-
-        /*
-         * ------------------------------------------------------------------------------------------------------
-         * INotifyPropertyChanged Methods
-         * ------------------------------------------------------------------------------------------------------
-         */
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 
