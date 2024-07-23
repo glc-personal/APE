@@ -1,7 +1,7 @@
 ﻿using APE.ViewModels;
 using System.Windows;
-using System.Collections.ObjectModel;
 using APE.ViewModels.Shared;
+using APE.ViewModels.StepContent;
 using Prism.Events;
 using System.Windows.Media;
 using System;
@@ -187,11 +187,36 @@ namespace APE
             if (StepContent.Height.Value == 0)
             {
                 StepContent.Height = new GridLength(0.8, GridUnitType.Star);
+                if (ViewModel.StepContentObject is not AddSampleStepContentViewModel)
+                {
+                    ViewModel.StepContentObject = new AddSampleStepContentViewModel
+                    {
+                        MyStepContentViewModel = new StepContentViewModel
+                        {
+                            MyBannerViewModel = new BannerViewModel
+                            {
+                                Title = "Add Sample",
+                                Description = "Protocol step for adding a sample",
+                                IconPath = "pack://application:,,,/Resources/sample-icon.png"
+                            },
+                            MyDescriptorViewModel = new DescriptorViewModel
+                            {
+                                Title = "Add Sample",
+                                Description = "Add a specific volume of sample to the corresponding Deep Well."
+                            },
+                        },
+                        SampleType = "Plasma",
+                        Batch = "A",
+                        RequiresNewTips = true,
+                        Volume = 100
+                    };
+                }
             }
             else
             {
                 StepContent.Height = new GridLength(0, GridUnitType.Star);
             }
         }
+
     }
 }

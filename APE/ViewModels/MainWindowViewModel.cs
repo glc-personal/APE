@@ -1,8 +1,6 @@
 ﻿using APE.Commands;
 using APE.ViewModels.Shared;
 using System;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
@@ -10,10 +8,11 @@ using System.Windows.Media;
 using Prism.Events;
 using Prism.Commands;
 using APE.UIEvents;
+using APE.ViewModels.StepContent;
 
 namespace APE.ViewModels
 {
-    public class MainWindowViewModel : INotifyPropertyChanged
+    public class MainWindowViewModel : ViewModelBase
     {
         private readonly IEventAggregator _eventAggregator;
 
@@ -33,6 +32,7 @@ namespace APE.ViewModels
         private ICommand toggleAddStepPanelCommand;
         private Brush statusBarBackground;
         private Brush statusBarForeground;
+        private object stepContentObject;
 
         /*
          * --------------------------------------------------------------------------------------------------------
@@ -55,6 +55,7 @@ namespace APE.ViewModels
         public DiscreteProgressBarViewModel MyDiscreteProgressBarViewModel { get; set; }
         public DescriptorViewModel MyProtocolDescriptorViewModel { get; set; }
         public AddStepPanelViewModel MyAddStepPanelViewModel { get; set; }
+        public StepContentViewModel MyStepContentViewModel { get; set; }
 
         /*
          * ----------------------------------------------------------------------------------------------------------------
@@ -239,6 +240,15 @@ namespace APE.ViewModels
                 }               
             }
         }
+        public object StepContentObject
+        {
+            get => stepContentObject;
+            set
+            {
+                stepContentObject = value;
+                OnPropertyChanged(nameof(StepContentObject));
+            }
+        }
 
         /*
          * ----------------------------------------------------------------------------------------------------------------
@@ -249,17 +259,6 @@ namespace APE.ViewModels
         {
             CurrentTime = DateTime.Now.ToString("hh:mm:ss tt");
             CurrentDate = DateTime.Now.ToString("M/d/yyyy");
-        }
-
-        /*
-         * ----------------------------------------------------------------------------------------------------------------
-         * INotifyPropertyChanged Members
-         * ----------------------------------------------------------------------------------------------------------------
-         */
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

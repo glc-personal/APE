@@ -4,12 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APE"
+        xmlns:vms="clr-namespace:APE.ViewModels"
+        xmlns:scvms="clr-namespace:APE.ViewModels.StepContent"
         xmlns:asp="clr-namespace:APE.Views.AddStepPanel"
         xmlns:shared="clr-namespace:APE.Views.Shared"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        WindowState="Maximized"
         Title="Assay Protocol Editor" MinHeight="550" MinWidth="1000">
+
     <!--<WindowState="Maximized">-->
     <DockPanel>
         <!--Main Menu-->
@@ -143,17 +145,17 @@
                    DataContext="{Binding MyProtocolDescriptorViewModel}"/>
 
                 <!-- Editor -->
-                <shared:ProtocolEditor Grid.Column="0" Grid.ColumnSpan="2"/>
+                <shared:ProtocolEditor Grid.Column="0" Grid.ColumnSpan="1" MinHeight="445"/>
 
                 <!-- Action Buttons -->
-                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="1">
                     <Button Content="Remove Selection" Style="{StaticResource MainWindowRemoveSelectionButtonStyle}"/>
                     <Button Content="Follow" Style="{StaticResource MainWindowFollowButtonStyle}"/>
                 </StackPanel>
             </StackPanel>
 
             <!-- Middle divider column -->
-            <Border Grid.Column="1" Style="{StaticResource MainWindowMiddleColumnStyle}">
+            <Border Grid.Column="1" VerticalAlignment="Stretch" Style="{StaticResource MainWindowMiddleColumnStyle}">
                 <Grid>
                     <!-- Row Defintions -->
                     <Grid.RowDefinitions>
@@ -167,14 +169,49 @@
 
             <!-- Add Step Panel -->
             <Grid Grid.Column="2">
+                <!-- Define Resources for different Step Content -->
+                <Grid.Resources>
+                    <DataTemplate x:Key="AddSampleTemplate">
+                        <StackPanel Orientation="Vertical">
+                            <shared:Banner DataContext="{Binding MyStepContentViewModel.MyBannerViewModel}"/>
+                            <shared:Descriptor DataContext="{Binding MyStepContentViewModel.MyDescriptorViewModel}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Batch"/>
+                                <TextBox Text="{Binding MyStepContentViewModel.Batch}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Volume"/>
+                                <TextBox Text="{Binding MyStepContentViewModel.Volume}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                    <!-- Add Reagent Data Template -->
+                    <!-- Transfer Solution Data Template -->
+                    <!-- etc -->
+                </Grid.Resources>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" x:Name="AddStepPanelContent"/>
                         <RowDefinition Height="0" x:Name="StepContent"/>
                     </Grid.RowDefinitions>
-                    <ScrollViewer Grid.Row="0">
-                        <asp:AddStepPanel DataContext="{Binding MyAddStepPanelViewModel}"/>
-                    </ScrollViewer>
+                    <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1">
+                        <ScrollViewer Grid.Row="0">
+                            <asp:AddStepPanel DataContext="{Binding MyAddStepPanelViewModel}"/>
+                        </ScrollViewer>
+                    </Border>
+                    <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                        <!-- Step Content -->
+                        <ContentControl Content="{Binding StepContentObject}">
+                            <ContentControl.Resources>
+                                <DataTemplate DataType="{x:Type scvms:AddSampleStepContentViewModel}">
+                                    <ContentPresenter ContentTemplate="{StaticResource AddSampleTemplate}"/>
+                                </DataTemplate>
+                                <!-- Add Reagent Data Template -->
+                                <!-- Transfer Solution Data Template -->
+                                <!-- etc -->
+                            </ContentControl.Resources>
+                        </ContentControl>
+                    </Border>
                 </Grid>
             </Grid>
 
