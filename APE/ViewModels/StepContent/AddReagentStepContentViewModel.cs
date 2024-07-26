@@ -29,7 +29,7 @@
                 OnPropertyChanged(nameof(Batch));
             }
         }
-        private string Reagent
+        public string Reagent
         {
             get => reagent;
             set
@@ -38,7 +38,7 @@
                 OnPropertyChanged(nameof(Reagent));
             }
         }
-        private int Volume
+        public int Volume
         {
             get => volume;
             set
@@ -47,7 +47,7 @@
                 OnPropertyChanged(nameof(Volume));
             }
         }
-        private string Destination
+        public string Destination
         {
             get => destination;
             set

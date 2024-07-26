@@ -223,7 +223,30 @@ namespace APE
         {
             if (StepContent.Height.Value == 0)
             {
-                StepContent.Height = new GridLength(0.8, GridUnitType.Star);            
+                StepContent.Height = new GridLength(0.8, GridUnitType.Star);
+                if (ViewModel.StepContentObject is not AddReagentStepContentViewModel)
+                {
+                    ViewModel.StepContentObject = new AddReagentStepContentViewModel
+                    {
+                        MyStepContentViewModel = new StepContentViewModel
+                        {
+                            MyBannerViewModel = new BannerViewModel
+                            {
+                                Title = "Add Reagent",
+                                Description = "Protocol step for adding a reagent",
+                                IconPath = "pack://application:,,,/Resources/reagents-icon.png"
+                            },
+                            MyDescriptorViewModel = new DescriptorViewModel
+                            {
+                                Title = "Add Reagent",
+                                Description = "Add a specific reagent volume to the provided location."
+                            },
+                        },
+                        Batch = "A",
+                        Volume = 100,
+                    };
+                }
+
             }
             else
             {
