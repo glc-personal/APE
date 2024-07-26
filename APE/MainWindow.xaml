@@ -10,7 +10,9 @@
         xmlns:shared="clr-namespace:APE.Views.Shared"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Assay Protocol Editor" MinHeight="550" MinWidth="1000">
+        Title="Assay Protocol Editor" 
+        Height="Auto" Width="Auto"
+        MinHeight="650" MinWidth="1000">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -19,8 +21,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <!--<WindowState="Maximized">-->
-    <DockPanel>
+
+    <DockPanel LastChildFill="True">
         <!--Main Menu-->
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
@@ -118,8 +120,26 @@
             </MenuItem>
         </Menu>
 
+        <!--Footer-->
+        <StatusBar DockPanel.Dock="Bottom"
+           Background="{Binding StatusBarBackground}" Foreground="{Binding StatusBarForeground}">
+            <StatusBarItem>
+                <TextBlock Text="{Binding Status}"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <Image Source="{Binding LinkIconPath}" Style="{StaticResource MainWindowLinkIconStyle}"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock>
+            <Run Text="{Binding CurrentTime}"/>
+            <Run Text=" "/>
+            <Run Text="{Binding CurrentDate}"/>
+                </TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+
         <!-- Content -->
-        <Grid DockPanel.Dock="Top">
+        <Grid>
             <!-- Grid Column Definitions -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" x:Name="MainWindowMainContent"/>
@@ -127,7 +147,7 @@
                 <ColumnDefinition Width="0*" x:Name="MainWindowAddStepPanel"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" Margin="0 0 0 0" VerticalAlignment="Top">
                 <!-- Banner -->
                 <shared:Banner Grid.Column="0" DataContext="{Binding MyBannerViewModel}" />
 
@@ -152,17 +172,17 @@
                    DataContext="{Binding MyProtocolDescriptorViewModel}"/>
 
                 <!-- Editor -->
-                <shared:ProtocolEditor Grid.Column="0" Grid.ColumnSpan="1" MinHeight="445"/>
+                <shared:ProtocolEditor Grid.Column="0" MinHeight="300" MaxHeight="500"/>
 
                 <!-- Action Buttons -->
-                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="1">
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
                     <Button Content="Remove Selection" Style="{StaticResource MainWindowRemoveSelectionButtonStyle}"/>
                     <Button Content="Follow" Style="{StaticResource MainWindowFollowButtonStyle}"/>
                 </StackPanel>
             </StackPanel>
 
             <!-- Middle divider column -->
-            <Border Grid.Column="1" VerticalAlignment="Stretch" Style="{StaticResource MainWindowMiddleColumnStyle}">
+            <Border Grid.Column="1" Style="{StaticResource MainWindowMiddleColumnStyle}">
                 <Grid>
                     <!-- Row Defintions -->
                     <Grid.RowDefinitions>
@@ -207,22 +227,6 @@
 
         </Grid>
 
-        <!--Footer-->
-        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" 
-                   Background="{Binding StatusBarBackground}" Foreground="{Binding StatusBarForeground}">
-            <StatusBarItem>
-                <TextBlock Text="{Binding Status}"/>
-            </StatusBarItem>
-            <StatusBarItem HorizontalAlignment="Right">
-                <Image Source="{Binding LinkIconPath}" Style="{StaticResource MainWindowLinkIconStyle}"/>
-            </StatusBarItem>
-            <StatusBarItem HorizontalAlignment="Right">
-                <TextBlock>
-                    <Run Text="{Binding CurrentTime}"/>
-                    <Run Text=" "/>
-                    <Run Text="{Binding CurrentDate}"/>
-                </TextBlock>
-            </StatusBarItem>
-        </StatusBar>
+        
     </DockPanel>
 </Window>
