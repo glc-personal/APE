@@ -11,7 +11,14 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Assay Protocol Editor" MinHeight="550" MinWidth="1000">
-
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Resources/DataTemplates/AddSampleStepContentTemplate.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Resources/DataTemplates/AddReagentStepContentTemplate.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <!--<WindowState="Maximized">-->
     <DockPanel>
         <!--Main Menu-->
@@ -169,40 +176,6 @@
 
             <!-- Add Step Panel -->
             <Grid Grid.Column="2">
-                <!-- Define Resources for different Step Content -->
-                <Grid.Resources>
-                    <DataTemplate x:Key="AddSampleTemplate">
-                        <StackPanel Orientation="Vertical">
-                            <shared:Banner DataContext="{Binding MyStepContentViewModel.MyBannerViewModel}"/>
-                            <shared:Descriptor DataContext="{Binding MyStepContentViewModel.MyDescriptorViewModel}"/>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Batch"/>
-                                <TextBox Text="{Binding MyStepContentViewModel.Batch}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Volume"/>
-                                <TextBox Text="{Binding MyStepContentViewModel.Volume}"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </DataTemplate>
-                    <!-- Add Reagent Data Template -->
-                    <DataTemplate x:Key="AddReagentTemplate">
-                        <StackPanel Orientation="Vertical">
-                            <shared:Banner DataContext="{Binding MyStepContentViewModel.MyBannerViewModel}"/>
-                            <shared:Descriptor DataContext="{Binding MyStepContentViewModel.MyDescriptorViewModel}"/>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Batch"/>
-                                <TextBox Text="{Binding MyStepContentViewModel.Batch}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Volume"/>
-                                <TextBox Text="{Binding MyStepContentViewModel.Volume}"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </DataTemplate>
-                    <!-- Transfer Solution Data Template -->
-                    <!-- etc -->
-                </Grid.Resources>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" x:Name="AddStepPanelContent"/>
@@ -218,11 +191,11 @@
                         <ContentControl Content="{Binding StepContentObject}">
                             <ContentControl.Resources>
                                 <DataTemplate DataType="{x:Type scvms:AddSampleStepContentViewModel}">
-                                    <ContentPresenter ContentTemplate="{StaticResource AddSampleTemplate}"/>
+                                    <ContentPresenter ContentTemplate="{StaticResource AddSampleStepContentTemplate}"/>
                                 </DataTemplate>
                                 <!-- Add Reagent Data Template -->
                                 <DataTemplate DataType="{x:Type scvms:AddReagentStepContentViewModel}">
-                                    <ContentPresenter ContentTemplate="{StaticResource AddReagentTemplate}"/>
+                                    <ContentPresenter ContentTemplate="{StaticResource AddReagentStepContentTemplate}"/>
                                 </DataTemplate>
                                 <!-- Transfer Solution Data Template -->
                                 <!-- etc -->

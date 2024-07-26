@@ -89,9 +89,9 @@ private void OnToggleAddSampleStepContent()
 ### Setup the Data Template for the Step
 Each step will require their own data template so the view knows what to load dynamically for the user to see.
 Provide a key for the data tempalte using the step and end with *Template*, e.g. for Add Sample the data template
-can be called *AddSampleTemplate*. An example data template is:
+can be called *AddSampleStepContentTemplate*. An example data template is:
 ```
-<DataTemplate x:Key="AddSampleTemplate">
+<DataTemplate x:Key="AddSampleStepContentTemplate">
                         <StackPanel Orientation="Vertical">
                             <shared:Banner DataContext="{Binding MyStepContentViewModel.MyBannerViewModel}"/>
                             <shared:Descriptor DataContext="{Binding MyStepContentViewModel.MyDescriptorViewModel}"/>
@@ -106,11 +106,15 @@ can be called *AddSampleTemplate*. An example data template is:
                         </StackPanel>
 </DataTemplate>
 ```
+this shall be placed at *APE.Resources.DataTemplate* in a *resource dictionary*, the naming convention will be the 
+same as the data template key name, therefore in this case we have *AddSampleStepContentTemplate.xaml*. This data template
+now can be used within the MainWindow by adding it as a windows resource which will be coverered in the following section
+on adding the data template.
 
 ### Add the Data Template to the Step Content for the Step
 Once the data template is setup it can be used via a static resource to get the tempalte.
 ```
 <DataTemplate DataType="{x:Type scvms:AddSampleStepContentViewModel}">
-    <ContentPresenter ContentTemplate="{StaticResource AddSampleTemplate}"/>
+    <ContentPresenter ContentTemplate="{StaticResource AddSampleStepContentTemplate}"/>
 </DataTemplate>
 ```
