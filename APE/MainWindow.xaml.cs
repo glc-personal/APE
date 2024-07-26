@@ -183,75 +183,51 @@ namespace APE
             }
         }
 
-        private void OnToggleAddSampleStepContent()
+        private void ToggleStepPanelDataContent<TViewModel>(GridLength dataPanelHeight, 
+            TViewModel viewModel, Action setupAction) where TViewModel : class
         {
-            if (StepContent.Height.Value == 0)
+            // Ensure that the current step content object is of type TViewModel
+            if (ViewModel.StepContentObject is not TViewModel)
             {
-                StepContent.Height = new GridLength(0.8, GridUnitType.Star);
-                if (ViewModel.StepContentObject is not AddSampleStepContentViewModel)
+                if (StepContent.Height.Value == 0)
                 {
-                    ViewModel.StepContentObject = new AddSampleStepContentViewModel
-                    {
-                        MyStepContentViewModel = new StepContentViewModel
-                        {
-                            MyBannerViewModel = new BannerViewModel
-                            {
-                                Title = "Add Sample",
-                                Description = "Protocol step for adding a sample",
-                                IconPath = "pack://application:,,,/Resources/sample-icon.png"
-                            },
-                            MyDescriptorViewModel = new DescriptorViewModel
-                            {
-                                Title = "Add Sample",
-                                Description = "Add a specific volume of sample to the corresponding Deep Well."
-                            },
-                        },
-                        SampleType = "Plasma",
-                        Batch = "A",
-                        RequiresNewTips = true,
-                        Volume = 100
-                    };
+                    // Set the data panel height
+                    StepContent.Height = dataPanelHeight;
+                    // Invoke the action
+                    setupAction.Invoke();
+                }
+                else
+                {
+                    // Invoke the action
+                    setupAction.Invoke();
                 }
             }
             else
             {
-                StepContent.Height = new GridLength(0, GridUnitType.Star);
+                if (StepContent.Height.Value == 0)
+                {
+                    // Set the data panel height
+                    StepContent.Height = dataPanelHeight;
+                    // Invoke the action
+                    setupAction.Invoke();
+                }
+                else
+                {
+                    StepContent.Height = new GridLength(0, GridUnitType.Star);
+                }
             }
+        }
+
+        private void OnToggleAddSampleStepContent()
+        {
+            ToggleStepPanelDataContent(new GridLength(0.8, GridUnitType.Star), 
+                new AddSampleStepContentViewModel(), ViewModel.SetupStepContentDataPanel_AddSample);
         }
 
         private void OnToggleAddReagentStepContent()
         {
-            if (StepContent.Height.Value == 0)
-            {
-                StepContent.Height = new GridLength(0.8, GridUnitType.Star);
-                if (ViewModel.StepContentObject is not AddReagentStepContentViewModel)
-                {
-                    ViewModel.StepContentObject = new AddReagentStepContentViewModel
-                    {
-                        MyStepContentViewModel = new StepContentViewModel
-                        {
-                            MyBannerViewModel = new BannerViewModel
-                            {
-                                Title = "Add Reagent",
-                                Description = "Protocol step for adding a reagent",
-                                IconPath = "pack://application:,,,/Resources/reagents-icon.png"
-                            },
-                            MyDescriptorViewModel = new DescriptorViewModel
-                            {
-                                Title = "Add Reagent",
-                                Description = "Add a specific reagent volume to the provided location."
-                            },
-                        },
-                        Batch = "A",
-                        Volume = 100,
-                    };
-                }
-
-            }
-            else
-            {
-                StepContent.Height = new GridLength(0, GridUnitType.Star);
-            }
+            ToggleStepPanelDataContent(new GridLength(0.8, GridUnitType.Star),
+                new AddReagentStepContentViewModel(), ViewModel.SetupStepContentDataPanel_AddReagent);
         }
 
     }

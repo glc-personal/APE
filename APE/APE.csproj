@@ -23,13 +23,15 @@
     <None Remove="Resources\add-icon.png" />
     <None Remove="Resources\copy-icon.png" />
     <None Remove="Resources\cut-icon.png" />
+    <None Remove="Resources\Images\reagents-icon.png" />
+    <None Remove="Resources\Images\sample-icon.png" />
     <None Remove="Resources\left-arrow-icon.png" />
     <None Remove="Resources\paste-icon.png" />
     <None Remove="Resources\right-arrow-icon.png" />
-    <None Remove="Resources\sample-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\sample-icon.png" />
+    <Resource Include="Resources\Images\reagents-icon.png" />
+    <Resource Include="Resources\Images\sample-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\left-arrow-icon.png" />
@@ -43,9 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\coordinates-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\reagents-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\pipette-icon.png" />

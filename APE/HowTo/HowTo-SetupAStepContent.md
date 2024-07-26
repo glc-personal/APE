@@ -10,7 +10,8 @@ and data template on the main window within the Step Content region.
 ## Content
 - Notes
 - Setup the Step Content Specific View Model
-- Initialize the Step Content Specific View Model
+- Initialize the Step Content Specific View Model within the MainWindowViewModel
+- Setup the Subscription Action for when the Button is Clicked
 - Setup the Data Template for the Step
 - Add the Data Template to the Step Content for the Step
 
@@ -45,46 +46,50 @@ public class AddSampleStepContentViewModel : StepContentViewModel
 ```
 
 ### Initialize the Step Content Specific View Model
+Initialization of the Step Content Specific View Model shall occur in within specific *SetupStepContentDataPanel_*
+methods within *MainWindowViewModel*. For example if we consider *Add Sample* we would have:
+```
+public void SetupStepContentDataPanel_AddSample()
+        {
+            StepContentObject = new AddSampleStepContentViewModel
+            {
+                MyStepContentViewModel = new StepContentViewModel
+                {
+                    MyBannerViewModel = new BannerViewModel
+                    {
+                        Title = "Add Sample",
+                        Description = "Protocol step for adding a sample",
+                        IconPath = "pack://application:,,,/Resources/Images/sample-icon.png"
+                    },
+                    MyDescriptorViewModel = new DescriptorViewModel
+                    {
+                        Title = "Add Sample",
+                        Description = "Add a specific volume of sample to the corresponding Deep Well."
+                    },
+                },
+                SampleType = "Plasma",
+                Batch = "A",
+                RequiresNewTips = true,
+                Volume = 100
+            };
+        }
+```
+
+### Setup the Subscription Action for when the Button is Clicked
 Within the code-behind for the MainWindow (MainWindow.xaml.cs), within the toggle method for the specific 
 step, initialize the step content specific view model's banner and descritor along with setting the height
 at which the step content shall be toggled at. For example:
 ```
 private void OnToggleAddSampleStepContent()
         {
-            if (StepContent.Height.Value == 0)
-            {
-                StepContent.Height = new GridLength(0.8, GridUnitType.Star);
-                if (ViewModel.StepContentObject is not AddSampleStepContentViewModel)
-                {
-                    ViewModel.StepContentObject = new AddSampleStepContentViewModel
-                    {
-                        MyStepContentViewModel = new StepContentViewModel
-                        {
-                            MyBannerViewModel = new BannerViewModel
-                            {
-                                Title = "Add Sample",
-                                Description = "Protocol step for adding a sample",
-                                IconPath = "pack://application:,,,/Resources/sample-icon.png"
-                            },
-                            MyDescriptorViewModel = new DescriptorViewModel
-                            {
-                                Title = "Add Sample",
-                                Description = "Add a specific volume of sample to the corresponding Deep Well."
-                            },
-                        },
-                        SampleType = "Plasma",
-                        Batch = "A",
-                        RequiresNewTips = true,
-                        Volume = 100
-                    };
-                }
-            }
-            else
-            {
-                StepContent.Height = new GridLength(0, GridUnitType.Star);
-            }
+            ToggleStepPanelDataContent(new GridLength(0.8, GridUnitType.Star), 
+                new AddSampleStepContentViewModel(), ViewModel.SetupStepContentDataPanel_AddSample);
         }
 ```
+where *ToggleStepPanelDataContent* handles the opening and closing of the Data Panel within the Step Panel. You can set
+the data panel height however you like, here we use the star type, the second parameter here is to ensure we either
+close the data panel or create the correct one if needed, and the third parameter uses the MainWindowViewModel's method
+for handling what happens when the data panel appears.
 
 ### Setup the Data Template for the Step
 Each step will require their own data template so the view knows what to load dynamically for the user to see.

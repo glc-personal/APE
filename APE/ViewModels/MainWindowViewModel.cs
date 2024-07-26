@@ -261,5 +261,58 @@ namespace APE.ViewModels
             CurrentTime = DateTime.Now.ToString("hh:mm:ss tt");
             CurrentDate = DateTime.Now.ToString("M/d/yyyy");
         }
+
+        /*
+         * ----------------------------------------------------------------------------------------------------------------
+         * Step Content Data Panel Setup Methods
+         * ----------------------------------------------------------------------------------------------------------------
+         */
+        public void SetupStepContentDataPanel_AddSample()
+        {
+            StepContentObject = new AddSampleStepContentViewModel
+            {
+                MyStepContentViewModel = new StepContentViewModel
+                {
+                    MyBannerViewModel = new BannerViewModel
+                    {
+                        Title = "Add Sample",
+                        Description = "Protocol step for adding a sample",
+                        IconPath = "pack://application:,,,/Resources/Images/sample-icon.png"
+                    },
+                    MyDescriptorViewModel = new DescriptorViewModel
+                    {
+                        Title = "Add Sample",
+                        Description = "Add a specific volume of sample to the corresponding Deep Well."
+                    },
+                },
+                SampleType = "Plasma",
+                Batch = "A",
+                RequiresNewTips = true,
+                Volume = 100
+            };
+        }
+
+        public void SetupStepContentDataPanel_AddReagent()
+        {
+            StepContentObject = new AddReagentStepContentViewModel
+            {
+                MyStepContentViewModel = new StepContentViewModel
+                {
+                    MyBannerViewModel = new BannerViewModel
+                    {
+                        Title = "Add Reagent",
+                        Description = "Protocol step for adding a reagent",
+                        IconPath = "pack://application:,,,/Resources/Images/reagents-icon.png"
+                    },
+                    MyDescriptorViewModel = new DescriptorViewModel
+                    {
+                        Title = "Add Reagent",
+                        Description = "Add a specific reagent volume to the provided location."
+                    },
+                },
+                Batch = "A",
+                Volume = 100
+            };
+        }
     }
 }
