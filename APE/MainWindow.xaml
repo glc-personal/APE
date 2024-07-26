@@ -186,6 +186,20 @@
                         </StackPanel>
                     </DataTemplate>
                     <!-- Add Reagent Data Template -->
+                    <DataTemplate x:Key="AddReagentTemplate">
+                        <StackPanel Orientation="Vertical">
+                            <shared:Banner DataContext="{Binding MyStepContentViewModel.MyBannerViewModel}"/>
+                            <shared:Descriptor DataContext="{Binding MyStepContentViewModel.MyDescriptorViewModel}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Batch"/>
+                                <TextBox Text="{Binding MyStepContentViewModel.Batch}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Volume"/>
+                                <TextBox Text="{Binding MyStepContentViewModel.Volume}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
                     <!-- Transfer Solution Data Template -->
                     <!-- etc -->
                 </Grid.Resources>
@@ -207,6 +221,9 @@
                                     <ContentPresenter ContentTemplate="{StaticResource AddSampleTemplate}"/>
                                 </DataTemplate>
                                 <!-- Add Reagent Data Template -->
+                                <DataTemplate DataType="{x:Type scvms:AddReagentStepContentViewModel}">
+                                    <ContentPresenter ContentTemplate="{StaticResource AddReagentTemplate}"/>
+                                </DataTemplate>
                                 <!-- Transfer Solution Data Template -->
                                 <!-- etc -->
                             </ContentControl.Resources>
