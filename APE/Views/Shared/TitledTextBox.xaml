@@ -18,6 +18,7 @@
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Width" Value="{Binding TextBoxWidth}"/>
             <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
         </Style>
         <Style x:Key="TitledTextBoxDeliminatorStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="14"/>

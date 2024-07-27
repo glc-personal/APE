@@ -172,7 +172,7 @@
             </WrapPanel>
 
             <!-- Protocol Progress Bar -->
-            <shared:DiscreteProgressBar Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+            <shared:DiscreteProgressBar Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1"
                                         DataContext="{Binding MyDiscreteProgressBarViewModel}"/>
 
             <!-- Protocol Descriptor -->

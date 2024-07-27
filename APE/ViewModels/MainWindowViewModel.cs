@@ -288,19 +288,27 @@ namespace APE.ViewModels
                     {
                         Title = "Batch",
                         DefaultText = "A",
-                        TextBoxWidth = "100"
+                        TextBoxWidth = "50"
                     },
-                    MyVolumeTitleTextBoxViewModel = new TitledTextBoxViewModel
+                    MyVolumeTitledTextBoxViewModel = new TitledTextBoxViewModel
                     {
                         Title = "Volume",
                         DefaultText = "1000",
-                        TextBoxWidth= "100",
+                        TextBoxWidth = "50",
+                    },
+                    MySampleTypeTitledTextBoxViewModel = new TitledTextBoxViewModel
+                    {
+                        Title = "Sample Type",
+                        DefaultText = "Plasma",
+                        TextBoxWidth = "50",
+                    },
+                    MyRequiresNewTipsTitledTextBoxViewModel = new TitledTextBoxViewModel
+                    {
+                        Title = "Requires New Tips",
+                        DefaultText = "Yes",
+                        TextBoxWidth = "50",
                     }
                 },
-                SampleType = "Plasma",
-                Batch = "A",
-                RequiresNewTips = true,
-                Volume = 100
             };
         }
 
@@ -321,9 +329,37 @@ namespace APE.ViewModels
                         Title = "Add Reagent",
                         Description = "Add a specific reagent volume to the provided location."
                     },
+                    MyBatchTitledTextBoxViewModel = new TitledTextBoxViewModel
+                    {
+                        Title = "Batch",
+                        DefaultText = "A",
+                        TextBoxWidth = "50",
+                    },
+                    MyReagentTitledTextBoxViewModel = new TitledTextBoxViewModel
+                    {
+                        Title = "Reagent",
+                        DefaultText = "Lysis Buffer",
+                        TextBoxWidth = "150",
+                    },
+                    MyVolumeTitledTextBoxViewModel = new TitledTextBoxViewModel
+                    {
+                        Title = "Volume",
+                        DefaultText = "100",
+                        TextBoxWidth = "50",
+                    },
+                    MyDestinationTitledTextBoxViewModel = new TitledTextBoxViewModel
+                    {
+                        Title = "Destination",
+                        DefaultText = "32 Deep Well",
+                        TextBoxWidth = "150",
+                    },
+                    MyRequiresNewTipsTitledTextBoxViewModel = new TitledTextBoxViewModel
+                    {
+                        Title = "Requires New Tips",
+                        DefaultText = "Yes",
+                        TextBoxWidth = "50",
+                    },
                 },
-                Batch = "A",
-                Volume = 100
             };
         }
     }

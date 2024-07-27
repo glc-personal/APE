@@ -13,7 +13,11 @@ namespace APE.ViewModels.StepContent
         public BannerViewModel MyBannerViewModel { get; set; }
         public DescriptorViewModel MyDescriptorViewModel { get; set; }
         public TitledTextBoxViewModel MyBatchTitledTextBoxViewModel { get; set; }
-        public TitledTextBoxViewModel MyVolumeTitleTextBoxViewModel { get; set; }
+        public TitledTextBoxViewModel MyVolumeTitledTextBoxViewModel { get; set; }
+        public TitledTextBoxViewModel MyRequiresNewTipsTitledTextBoxViewModel { get; set; }
+        public TitledTextBoxViewModel MySampleTypeTitledTextBoxViewModel { get; set; }
+        public TitledTextBoxViewModel MyReagentTitledTextBoxViewModel { get; set; }
+        public TitledTextBoxViewModel MyDestinationTitledTextBoxViewModel { get; set; }
 
         /*
          * ------------------------------------------------------------------------------------------------------
