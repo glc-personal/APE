@@ -7,10 +7,18 @@
             <shared:Descriptor DataContext="{Binding MyStepContentViewModel.MyDescriptorViewModel}"/>
             <Border BorderBrush="Black" BorderThickness="0.5" Margin="10">
                 <StackPanel Orientation="Vertical">
-                    <shared:TitledTextBox HorizontalAlignment="Left" Margin="10 10 0 10"
-                        DataContext="{Binding MyStepContentViewModel.MyBatchTitledTextBoxViewModel}"/>
-                    <shared:TitledTextBox HorizontalAlignment="Left" Margin="10 10 0 10"
-                        DataContext="{Binding MyStepContentViewModel.MyVolumeTitleTextBoxViewModel}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <shared:TitledTextBox HorizontalAlignment="Left" Margin="10 10 0 10"
+                                              DataContext="{Binding MyStepContentViewModel.MyBatchTitledTextBoxViewModel}"/>
+                        <shared:TitledTextBox HorizontalAlignment="Left" Margin="10 10 0 10"
+                                              DataContext="{Binding MyStepContentViewModel.MySampleTypeTitledTextBoxViewModel}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <shared:TitledTextBox HorizontalAlignment="Left" Margin="10 10 0 10"
+                                              DataContext="{Binding MyStepContentViewModel.MyVolumeTitledTextBoxViewModel}"/>
+                        <shared:TitledTextBox HorizontalAlignment="Left" Margin="10 10 0 10"
+                                              DataContext="{Binding MyStepContentViewModel.MyRequiresNewTipsTitledTextBoxViewModel}"/>
+                    </StackPanel>
                 </StackPanel>
             </Border>
         </StackPanel>

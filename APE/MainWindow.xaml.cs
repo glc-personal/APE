@@ -34,7 +34,7 @@ namespace APE
             };
             ViewModel.MyAddIconButtonViewModel = new IconButtonViewModel
             {
-                IconPath = "pack://application:,,,/Resources/left-arrow-icon.png",
+                IconPath = "pack://application:,,,/Resources/Images/left-arrow-icon.png",
                 Command = ViewModel.ToggleAddStepPanelCommand,
                 ButtonWidth = "20",
                 ButtonHeight = "20",
@@ -174,12 +174,12 @@ namespace APE
             if (MainWindowAddStepPanel.Width.Value == 0)
             {
                 MainWindowAddStepPanel.Width = new GridLength(400);
-                ViewModel.MyAddIconButtonViewModel.IconPath = "pack://application:,,,/Resources/right-arrow-icon.png";
+                ViewModel.MyAddIconButtonViewModel.IconPath = "pack://application:,,,/Resources/Images/right-arrow-icon.png";
             }
             else
             {
                 MainWindowAddStepPanel.Width = new GridLength(0, GridUnitType.Star);
-                ViewModel.MyAddIconButtonViewModel.IconPath = "pack://application:,,,/Resources/left-arrow-icon.png";
+                ViewModel.MyAddIconButtonViewModel.IconPath = "pack://application:,,,/Resources/Images/left-arrow-icon.png";
             }
         }
 

@@ -5,13 +5,21 @@
         <StackPanel Orientation="Vertical">
             <shared:Banner DataContext="{Binding MyStepContentViewModel.MyBannerViewModel}"/>
             <shared:Descriptor DataContext="{Binding MyStepContentViewModel.MyDescriptorViewModel}"/>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Batch"/>
-                <TextBox Text="{Binding MyStepContentViewModel.Batch}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Volume"/>
-                <TextBox Text="{Binding MyStepContentViewModel.Volume}"/>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <shared:TitledTextBox 
+                        DataContext="{Binding MyStepContentViewModel.MyBatchTitledTextBoxViewModel}"/>
+                    <shared:TitledTextBox 
+                        DataContext="{Binding MyStepContentViewModel.MyReagentTitledTextBoxViewModel}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <shared:TitledTextBox 
+                        DataContext="{Binding MyStepContentViewModel.MyVolumeTitledTextBoxViewModel}"/>
+                    <shared:TitledTextBox 
+                        DataContext="{Binding MyStepContentViewModel.MyDestinationTitledTextBoxViewModel}"/>
+                </StackPanel>
+                <shared:TitledTextBox HorizontalAlignment="Center"
+                    DataContext="{Binding MyStepContentViewModel.MyRequiresNewTipsTitledTextBoxViewModel}"/>
             </StackPanel>
         </StackPanel>
     </DataTemplate>

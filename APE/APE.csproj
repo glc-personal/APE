@@ -34,7 +34,7 @@
     <Resource Include="Resources\Images\sample-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\left-arrow-icon.png" />
+    <Resource Include="Resources\Images\left-arrow-icon.png" />
     <Resource Include="Resources\paste-icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\play-icon.png" />
-    <Resource Include="Resources\right-arrow-icon.png" />
+    <Resource Include="Resources\Images\right-arrow-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\stop-icon.png" />
