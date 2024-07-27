@@ -284,6 +284,18 @@ namespace APE.ViewModels
                         Title = "Add Sample",
                         Description = "Add a specific volume of sample to the corresponding Deep Well."
                     },
+                    MyBatchTitledTextBoxViewModel = new TitledTextBoxViewModel
+                    {
+                        Title = "Batch",
+                        DefaultText = "A",
+                        TextBoxWidth = "100"
+                    },
+                    MyVolumeTitleTextBoxViewModel = new TitledTextBoxViewModel
+                    {
+                        Title = "Volume",
+                        DefaultText = "1000",
+                        TextBoxWidth= "100",
+                    }
                 },
                 SampleType = "Plasma",
                 Batch = "A",

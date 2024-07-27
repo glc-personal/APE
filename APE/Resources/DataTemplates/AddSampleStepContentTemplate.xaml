@@ -5,14 +5,14 @@
         <StackPanel Orientation="Vertical">
             <shared:Banner DataContext="{Binding MyStepContentViewModel.MyBannerViewModel}"/>
             <shared:Descriptor DataContext="{Binding MyStepContentViewModel.MyDescriptorViewModel}"/>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Batch"/>
-                <TextBox Text="{Binding MyStepContentViewModel.Batch}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Volume"/>
-                <TextBox Text="{Binding MyStepContentViewModel.Volume}"/>
-            </StackPanel>
+            <Border BorderBrush="Black" BorderThickness="0.5" Margin="10">
+                <StackPanel Orientation="Vertical">
+                    <shared:TitledTextBox HorizontalAlignment="Left" Margin="10 10 0 10"
+                        DataContext="{Binding MyStepContentViewModel.MyBatchTitledTextBoxViewModel}"/>
+                    <shared:TitledTextBox HorizontalAlignment="Left" Margin="10 10 0 10"
+                        DataContext="{Binding MyStepContentViewModel.MyVolumeTitleTextBoxViewModel}"/>
+                </StackPanel>
+            </Border>
         </StackPanel>
     </DataTemplate>
 </ResourceDictionary>

@@ -12,6 +12,8 @@ namespace APE.ViewModels.StepContent
          */
         public BannerViewModel MyBannerViewModel { get; set; }
         public DescriptorViewModel MyDescriptorViewModel { get; set; }
+        public TitledTextBoxViewModel MyBatchTitledTextBoxViewModel { get; set; }
+        public TitledTextBoxViewModel MyVolumeTitleTextBoxViewModel { get; set; }
 
         /*
          * ------------------------------------------------------------------------------------------------------
